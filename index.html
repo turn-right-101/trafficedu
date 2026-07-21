@@ -1606,19 +1606,22 @@
     let globalAudioCtx = null;
 
     function initGlobalAudio() {
-      if (!globalAudioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) {
-          globalAudioCtx = new AudioContext();
+      try {
+        if (!globalAudioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            globalAudioCtx = new AudioContext();
+          }
         }
-      }
-      if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
-        globalAudioCtx.resume();
-      }
+        if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
+          globalAudioCtx.resume();
+        }
+      } catch (e) {}
     }
 
-    document.addEventListener("pointerdown", initGlobalAudio, { once: true });
-    document.addEventListener("touchstart", initGlobalAudio, { once: true });
+    document.addEventListener("pointerdown", initGlobalAudio);
+    document.addEventListener("touchstart", initGlobalAudio);
+    document.addEventListener("click", initGlobalAudio);
 
     const state = { 
       currentScreen: "video", 
@@ -1667,6 +1670,7 @@
               gain.gain.setValueAtTime(0.2, startTime);
               gain.gain.exponentialRampToValueAtTime(0.01, endTime);
               osc.start(startTime); osc.stop(endTime);
+              osc.onended = () => { osc.disconnect(); gain.disconnect(); };
             });
           }
         } catch (e) { console.log("오디오 미지원 패스"); }
@@ -1757,6 +1761,7 @@
             gain.gain.setValueAtTime(0.15, ctx.currentTime + (index * 0.08));
             gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (index * 0.08) + 0.2);
             osc.start(ctx.currentTime + (index * 0.08)); osc.stop(ctx.currentTime + (index * 0.08) + 0.2);
+            osc.onended = () => { osc.disconnect(); gain.disconnect(); };
           });
         } else {
           const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -1765,6 +1770,7 @@
           gain.gain.setValueAtTime(0.2, ctx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.45); 
           osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.45);
+          osc.onended = () => { osc.disconnect(); gain.disconnect(); };
         }
       } catch (e) {}
     }
@@ -2007,6 +2013,7 @@
       const numDisplay = document.getElementById("countdown-num");
       const playBeep = (isStart) => {
         try {
+          initGlobalAudio();
           const ctx = globalAudioCtx;
           if (!ctx) return;
           const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -2020,6 +2027,7 @@
             gain.gain.setValueAtTime(0.2, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
             osc.start(); osc.stop(ctx.currentTime + 0.08);
           }
+          osc.onended = () => { osc.disconnect(); gain.disconnect(); };
         } catch (e) {}
       };
 
@@ -2155,6 +2163,7 @@
                   gain.gain.setValueAtTime(0.2, ctx.currentTime + (index * 0.12));
                   gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (index * 0.12) + 0.3);
                   osc.start(ctx.currentTime + (index * 0.12)); osc.stop(ctx.currentTime + (index * 0.12) + 0.3);
+                  osc.onended = () => { osc.disconnect(); gain.disconnect(); };
                 });
               }
             } catch (e) {}
@@ -2187,6 +2196,7 @@
               gain.gain.setValueAtTime(0.2, ctx.currentTime);
               gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
               osc.start(); osc.stop(ctx.currentTime + 0.3);
+              osc.onended = () => { osc.disconnect(); gain.disconnect(); };
             }
           } catch(e) {}
         }, 4000);
@@ -2240,6 +2250,7 @@
                   gain.gain.setValueAtTime(0.2, ctx.currentTime + (index * 0.12));
                   gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (index * 0.12) + 0.3);
                   osc.start(ctx.currentTime + (index * 0.12)); osc.stop(ctx.currentTime + (index * 0.12) + 0.3);
+                  osc.onended = () => { osc.disconnect(); gain.disconnect(); };
                 });
               }
             } catch (e) {}
@@ -2284,12 +2295,14 @@
                 osc1.type = "sine"; osc1.frequency.setValueAtTime(1046.50, ctx.currentTime);
                 gain1.gain.setValueAtTime(0.15, ctx.currentTime); gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
                 osc1.start(ctx.currentTime); osc1.stop(ctx.currentTime + 0.15);
+                osc1.onended = () => { osc1.disconnect(); gain1.disconnect(); };
                 
                 const osc2 = ctx.createOscillator(); const gain2 = ctx.createGain();
                 osc2.connect(gain2); gain2.connect(ctx.destination);
                 osc2.type = "sine"; osc2.frequency.setValueAtTime(783.99, ctx.currentTime + 0.12);
                 gain2.gain.setValueAtTime(0.15, ctx.currentTime + 0.12); gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.27);
                 osc2.start(ctx.currentTime + 0.12); osc2.stop(ctx.currentTime + 0.27);
+                osc2.onended = () => { osc2.disconnect(); gain2.disconnect(); };
               } catch (e) {}
             };
             playSound(); setTimeout(() => { playSound(); }, 400);
@@ -2502,12 +2515,14 @@
           osc1.connect(gain1); gain1.connect(ctx.destination); osc1.type = "triangle"; osc1.frequency.setValueAtTime(1200, ctx.currentTime); 
           gain1.gain.setValueAtTime(0.3, ctx.currentTime); gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
           osc1.start(); osc1.stop(ctx.currentTime + 0.3);
+          osc1.onended = () => { osc1.disconnect(); gain1.disconnect(); };
 
           const osc2 = ctx.createOscillator(); const gain2 = ctx.createGain();
           osc2.connect(gain2); gain2.connect(ctx.destination); osc2.type = "sawtooth"; osc2.frequency.setValueAtTime(180, ctx.currentTime + 0.3);
-          osc2.frequency.linearRampToValueAtTime(60, ctx.currentTime + 0.3);
+          osc2.frequency.linearRampToValueAtTime(60, ctx.currentTime + 0.7);
           gain2.gain.setValueAtTime(0.2, ctx.currentTime + 0.3); gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.7);
           osc2.start(ctx.currentTime + 0.3); osc2.stop(ctx.currentTime + 0.7);
+          osc2.onended = () => { osc2.disconnect(); gain2.disconnect(); };
         }
       } catch (e) {}
       showResult(title, message, items);
