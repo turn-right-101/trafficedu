@@ -152,9 +152,9 @@
         border-color: #cca43b !important;
       }
       100% {
-        transform: scale(1.05);  
-        filter: brightness(1.4); 
-        box-shadow: 0 0 30px #f59e0b, inset 0 0 15px #ffffff !important;
+        transform: scale(1.10);  
+        filter: brightness(1.8); 
+        box-shadow: 0 0 40px #f59e0b, inset 0 0 15px #ffffff !important;
         border-color: #fde68a !important;
       }
     } 
@@ -1131,7 +1131,7 @@
         <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 14px 12px; margin-bottom: 16px; text-align: center; word-break: keep-all; line-height: 1.6; font-size: 13.5px; color: #f8fafc;">
           <strong style="color: #facc15; font-size: 15px; display: block; margin-bottom: 8px; text-align: center;">📢 앱 제작 취지</strong>
           교차로 보행자 사고는 12대 중과실 사고로 형사처벌 대상이 됩니다. 그럼에도 불구하고 <br><span style="color: #ef4444; font-weight: bold;"> 우회전 통행방법을 정확히 인지하고 있는<br> 운전자는 0.3%에 불과</span>하다는 과거 언론보도가 있을 정도로 운전자분들의 우회전 통행방법 이해도는 낮은편입니다.<br><br>
-          이에 글과 그림으로 많은 홍보를 하였지만 어려워 하시는 분들이 계셔서 앱을 만들게 되었습니다.<br> 도움이 되시길 바랍니다.
+          이에, 글과 그림으로 많은 홍보를 하였지만 어려워 하시는 분들이 계셔서 앱을 만들게 되었습니다.<br> 도움이 되시길 바랍니다.
         </div>
         <div class="copyright-title">Copyright 2026. 해남경찰서. All rights reserved.</div>
         <div class="copyright-content">
@@ -1156,7 +1156,7 @@
 
     <section class="landing" id="landingScreen">
       <h1>우회전 참교육</h1>
-      <p class="landing-copy">운전자분들의 많은 문의와 실제 단속 사례를 바탕으로, 올바른 우회전 통행 방법을 쉽게 이해하실 수 있도록 핵심 상황 위주로 구성한 교육 프로그램입니다. <br> <br> 우회전 통행의 규칙은 생각보다 매우 간단합니다.<br> 이 프로그램으로 규칙을 쉽게 이해하시기를 바랍니다. <br> <br> ※ 이 앱은 교육 및 참고용이므로, 실제 운전시에는 항상 현장 교통상황과 신호에 주의하며 운행하시기 바랍니다.</p>
+      <p class="landing-copy">운전자분들의 많은 문의와 실제 단속 사례를 바탕으로, 올바른 우회전 통행 방법을 쉽게 이해하실 수 있도록 핵심 상황 위주로 구성한 교육 프로그램입니다. <br> <br> 우회전 통행 규칙은 생각보다 매우 간단합니다.<br> 이 프로그램으로 규칙을 쉽게 이해하시기를 바랍니다. <br> <br> ※ 이 앱은 교육 및 참고용이므로, 실제 운전시에는 항상 현장 교통상황과 신호에 주의하며 운행하시기 바랍니다.</p>
       
       <div class="card" style="margin: 14px auto 2px auto; padding: 8px 16px; width: 100%; border-radius: 12px; text-align: center;">
         <span style="font-size: 17px; font-weight: 900; color: #fde68a; letter-spacing: -0.02em; display: block; line-height: 1.2;">
@@ -1244,8 +1244,8 @@
           <div class="watch-list" style="text-align: center;">
            <div class="watch-item">【차량 신호가】 <span style="color: #ef4444; font-weight: 900;">빨간불</span>이면 <span style="color: #ef4444; font-weight: 900;">일시정지</span> 후 우회전</div>
             <div class="watch-item">【차량 신호가】 <span style="color: #22c55e; font-weight: 900;">초록불</span>이면 <span style="color: #22c55e; font-weight: 900;">서행</span>하며 우회전</div>
-            <div class="watch-item">【우회전 시】 보행자가 <span style="color: #ef4444; font-weight: 900;">있으면</span> 반드시 <span style="color: #ef4444; font-weight: 900;">일시정지</span></div>
-            <div class="watch-item">【우회전 시】 보행자가 <span style="color: #22c55e; font-weight: 900;">없으면</span> <span style="color: #22c55e; font-weight: 900;">서행</span>하며 통과</div>
+            <div class="watch-item"> 보행자가 <span style="color: #ef4444; font-weight: 900;">있으면</span> 반드시 <span style="color: #ef4444; font-weight: 900;">일시정지</span></div>
+            <div class="watch-item"> 보행자가 <span style="color: #22c55e; font-weight: 900;">없으면</span> <span style="color: #22c55e; font-weight: 900;">서행</span>하며 통과</div>
           </div>
           <div class="row">
             <button class="btn btn-primary" id="toQuizBtn" style="width: 100% !important;">퀴즈 시작</button>
@@ -1255,19 +1255,25 @@
       </section>
 
       <section class="screen" id="screen-quiz">
-        <div class="card">
-          <div class="quiz-head">
-            <div class="quiz-step" id="quizStep">문제 1 / 3</div>
-            <h2 class="quiz-question" id="quizQuestion"></h2>
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="drive-head">
+            <button class="nav-btn" id="quizTopPrevBtn">◀ 이전</button>
+            <span id="quizStep">문제 1 / 5</span>
+            <button class="nav-btn" id="quizTopNextBtn">다음 ▶</button>
           </div>
-          <img class="quiz-image" id="quizImage" alt="퀴즈 상황 이미지">
-          <div class="options" id="quizOptions"></div>
-          <div class="feedback" id="quizFeedback"></div>
-          <div class="quiz-nav">
-            <button class="btn btn-dark" id="quizPrevBtn">이전</button>
-            <button class="btn btn-green" id="quizNextBtn" disabled>다음</button>
+          <div style="padding: 12px;">
+            <div class="quiz-head">
+              <h2 class="quiz-question" id="quizQuestion"></h2>
+            </div>
+            <img class="quiz-image" id="quizImage" alt="퀴즈 상황 이미지">
+            <div class="options" id="quizOptions"></div>
+            <div class="feedback" id="quizFeedback"></div>
+            <div class="quiz-nav">
+              <button class="btn btn-dark" id="quizPrevBtn">이전</button>
+              <button class="btn btn-green" id="quizNextBtn" disabled>다음</button>
+            </div>
+            <div class="hint" id="quizHint">사진을 보고 가장 맞는 답을 선택하세요.</div>
           </div>
-          <div class="hint" id="quizHint">사진을 보고 가장 맞는 답을 선택하세요.</div>
         </div>
       </section>                                                
 
@@ -1281,25 +1287,25 @@
             .edu-table-right-cell { padding: 10px 14px; font-size: 13.5px; font-weight: 800; color: #bfd0e0; text-align: left; display: flex; align-items: center; line-height: 1.4; }
             .edu-table-right-cell:first-child { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
           </style>
-          <h2 style="color: var(--yellow); text-align: center; margin-bottom: 15px; font-weight: 900; font-size: 20px; word-break: keep-all; letter-spacing: -0.03em;"> 신호등이 있는 일반 교차로,<br> 이것만 기억하세요<span style="color: #ef4444; font-weight: 900; margin-left: 2px;">!!</span></h2>
+          <h2 style="color: var(--yellow); text-align: center; margin-bottom: 15px; font-weight: 900; font-size: 20px; word-break: keep-all; letter-spacing: -0.03em;"> 신호등이 있는 일반 교차로,<br> 이것만 기억하세요</h2>
           <div class="edu-table-container">
             <div class="edu-table-row">
               <div class="edu-table-left">차량<br>신호가</div>
               <div class="edu-table-right-box">
-                <div class="edu-table-right-cell">🔴 <span style="color: #ef4444; font-weight: 900;"> 빨간불</span>이면  <span style="color: #ef4444; font-weight: 900;"> 일시정지 </span>후 우회전</div>
-                <div class="edu-table-right-cell">🟢 <span style="color: #22c55e; font-weight: 900;">초록불</span>이면 <span style="color: #22c55e; font-weight: 900;">서행</span>하며 우회전</div>
+                <div class="edu-table-right-cell">🔴&nbsp;<span style="color: #ef4444; font-weight: 900;">빨간불</span>이면&nbsp;<span style="color: #ef4444; font-weight: 900;">일시정지</span>&nbsp;후 우회전</div>
+                <div class="edu-table-right-cell">🟢&nbsp;<span style="color: #22c55e; font-weight: 900;">초록불</span>이면&nbsp;<span style="color: #22c55e; font-weight: 900;">서행</span>하며 우회전</div>
               </div>
             </div>
             <div class="edu-table-row">
-              <div class="edu-table-left">우회전 시<br>횡단보도에</div>
+              <div class="edu-table-left">횡단보도에</div>
               <div class="edu-table-right-box">
-                <div class="edu-table-right-cell" style="display: block;">🚶 사람이 있으면 일시정지</div>
-                <div class="edu-table-right-cell">❌ 사람이 없으면 서행하며 통과</div>
+                <div class="edu-table-right-cell" style="display: block;">🚶 보행자가 <span style="color: #ef4444; font-weight: 900;">있으면</span> 반드시 <span style="color: #ef4444; font-weight: 900;">일시정지</span></div>
+                <div class="edu-table-right-cell">❌ 보행자가&nbsp;<span style="color: #22c55e; font-weight: 900;">없으면 서행</span>하며 통과</div>
               </div>
             </div>
           </div>
-          <button class="btn" id="btn-gate-confirm" style="width: 100%; background-color: #fee500 !important; color: #191919 !important; font-weight: 700; border: 1px solid #fada0a !important;">
-            알겠습니다<span style="font-size: 16px; font-weight: 800; display: inline-block; margin-left: 4px; color: #191919 !important;">(누르면 실습 시작)</span>
+          <button class="btn" id="btn-gate-confirm" style="width: 100%; min-height: 52px; background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%) !important; color: #ffffff !important; border: 1px solid #60a5fa !important; border-radius: 14px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important; font-size: 18px; font-weight: 900; letter-spacing: -0.02em; cursor: pointer;">
+            알겠습니다 <span style="font-size: 18px; font-weight: 800; color: #fde68a !important; margin-left: 4px;">(누르면 실습 시작)</span>
           </button>
           <p style="font-size: 18px; font-weight: 800; color: #facc15; text-align: center; margin: 14px 0 0 0; text-shadow: 0 0 12px #facc15, 0 0 4px rgba(250, 204, 21, 0.6); animation: flash-blink 0.5s infinite alternate;">⚠️ 무음모드를 해제하고 사용하세요.</p>
         </div>
@@ -1538,11 +1544,11 @@
     }
 
     const quizData = [
-      { image: "assets/q1.jpg", question: "차량신호등이 적색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 정지선에서 일시정지 했다가 통과한다", "2. 천천히 서행하며 보행자 신호에서 일시정지한다"], answer: 0, explain: "차량신호가 빨간불이면 무조건 일시정지 해야합니다." },
-      { image: "assets/q3.jpg", question: "차량신호등이 초록색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 안전을 살피며 서행 후 통과한다.", "2. 정지선에서 일지정지 후 서행한다."], answer: 0, explain: "차량신호가 초록불인경우 일시정지 의무는 없습니다." },
-      { image: "assets/q5.jpg", question: "초록불인데 횡단보도에 보행자가 없습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자 유무 확인하며 서행한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도에 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
-      { image: "assets/q2.jpg", question: "횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자가 인도까지 올라가면 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도에 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
-      { image: "assets/q4.jpg", question: "첫번째 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1.보행자가 인도까지 올라가 안전해지면 통과한다.", "2.보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "첫 번째, 두 번째 횡단보도 상관없이 건너려는 사람이 없으면 서행으로 통과하세요." }
+      { image: "assets/q1.jpg", question: "차량신호등이 적색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 정지선에서 일시정지 후 통과한다.", "2. 일시정지 없이 통과한다."], answer: 0, explain: "차량신호가 빨간불이면 무조건 일시정지 해야합니다." },
+      { image: "assets/q3.jpg", question: "차량신호등이 초록색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 보행자 유무를 살피면서 서행으로 통과한다.", "2. 정지선에서 일지정지 후 통과한다."], answer: 0, explain: "차량신호가 초록불인경우 일시정지 의무는 없습니다." },
+      { image: "assets/q5.jpg", question: "초록불인데 횡단보도에 보행자가 없습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자가 없는것이 확실하면 서행으로 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
+      { image: "assets/q2.jpg", question: "초록불, 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자가 인도까지 올라가면 서행으로 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
+      { image: "assets/q4.jpg", question: "첫번째 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1.보행자가 인도까지 올라가 안전해지면 통과한다.", "2.보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "첫 번째, 두 번째 횡단보도 상관없이 건너거나 건너려는 사람이 없으면 서행으로 통과하세요." }
     ];
 
     const practiceScenarios = [
@@ -1597,6 +1603,23 @@
     const retryBtn = document.getElementById("retryBtn");
     const nextScenarioBtn = document.getElementById("nextScenarioBtn");
 
+    let globalAudioCtx = null;
+
+    function initGlobalAudio() {
+      if (!globalAudioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          globalAudioCtx = new AudioContext();
+        }
+      }
+      if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
+        globalAudioCtx.resume();
+      }
+    }
+
+    document.addEventListener("pointerdown", initGlobalAudio, { once: true });
+    document.addEventListener("touchstart", initGlobalAudio, { once: true });
+
     const state = { 
       currentScreen: "video", 
       quizIndex: 0, 
@@ -1631,10 +1654,9 @@
       
       if (title.indexOf("성공") !== -1 || title.indexOf("PERFECT") !== -1) {
         try {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          if (AudioContext) {
-            const ctx = new AudioContext();
-            if (ctx.state === 'suspended') ctx.resume();
+          initGlobalAudio();
+          const ctx = globalAudioCtx;
+          if (ctx) {
             const notes = [523.25, 659.25, 783.99, 1046.50]; 
             notes.forEach((freq, index) => {
               const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -1646,7 +1668,6 @@
               gain.gain.exponentialRampToValueAtTime(0.01, endTime);
               osc.start(startTime); osc.stop(endTime);
             });
-            setTimeout(() => { if (ctx && ctx.state !== 'closed') ctx.close(); }, 1500);
           }
         } catch (e) { console.log("오디오 미지원 패스"); }
       }
@@ -1724,10 +1745,9 @@
 
     function playQuizAudio(isCorrect) {
       try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContext) return;
-        const ctx = new AudioContext();
-        if (ctx.state === 'suspended') ctx.resume();
+        initGlobalAudio();
+        const ctx = globalAudioCtx;
+        if (!ctx) return;
         if (isCorrect) {
           const notes = [523.25, 659.25, 783.99, 1046.50]; 
           notes.forEach((freq, index) => {
@@ -1746,7 +1766,6 @@
           gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.45); 
           osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.45);
         }
-        setTimeout(() => { if (ctx && ctx.state !== 'closed') ctx.close(); }, 800);
       } catch (e) {}
     }
 
@@ -1983,13 +2002,13 @@
     }
 
     function triggerCountdownSequence() {
+      initGlobalAudio();
       const startBtn = document.getElementById("countdownStartBtn");
       const numDisplay = document.getElementById("countdown-num");
       const playBeep = (isStart) => {
         try {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          if (!AudioContext) return;
-          const ctx = new AudioContext();
+          const ctx = globalAudioCtx;
+          if (!ctx) return;
           const osc = ctx.createOscillator(); const gain = ctx.createGain();
           osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine";
           if (isStart) {
@@ -2125,9 +2144,9 @@
           if (!state.hasStoppedOnRed) {
             state.hasStoppedOnRed = true;
             try {
-              const AudioContext = window.AudioContext || window.webkitAudioContext;
-              if (AudioContext) {
-                const ctx = new AudioContext(); if (ctx.state === 'suspended') ctx.resume();
+              initGlobalAudio();
+              const ctx = globalAudioCtx;
+              if (ctx) {
                 const notes = [523.25, 659.25, 783.99, 1046.50]; 
                 notes.forEach((freq, index) => {
                   const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -2137,7 +2156,6 @@
                   gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (index * 0.12) + 0.3);
                   osc.start(ctx.currentTime + (index * 0.12)); osc.stop(ctx.currentTime + (index * 0.12) + 0.3);
                 });
-                setTimeout(() => { if (ctx && ctx.state !== 'closed') ctx.close(); }, 20000);
               }
             } catch (e) {}
           }
@@ -2160,9 +2178,9 @@
           
           stopTimer.textContent = "녹색 화살표 점등! 서행하며 우회전하세요.";
           try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) {
-              const ctx = new AudioContext(); if (ctx.state === 'suspended') ctx.resume();
+            initGlobalAudio();
+            const ctx = globalAudioCtx;
+            if (ctx) {
               const osc = ctx.createOscillator(); const gain = ctx.createGain();
               osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"; 
               osc.frequency.setValueAtTime(1046.50, ctx.currentTime); 
@@ -2211,9 +2229,9 @@
           if (state.currentSpeed === 0 && !state.hasStoppedSecond) {
             state.hasStoppedSecond = true; 
             try {
-              const AudioContext = window.AudioContext || window.webkitAudioContext;
-              if (AudioContext) {
-                const ctx = new AudioContext(); if (ctx.state === 'suspended') ctx.resume();
+              initGlobalAudio();
+              const ctx = globalAudioCtx;
+              if (ctx) {
                 const notes = [523.25, 659.25, 783.99, 1046.50]; 
                 notes.forEach((freq, index) => {
                   const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -2223,7 +2241,6 @@
                   gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (index * 0.12) + 0.3);
                   osc.start(ctx.currentTime + (index * 0.12)); osc.stop(ctx.currentTime + (index * 0.12) + 0.3);
                 });
-                setTimeout(() => { if (ctx && ctx.state !== 'closed') ctx.close(); }, 1500);
               }
             } catch (e) {}
           }
@@ -2259,9 +2276,9 @@
             state.hasSwitchedAudio = true;
             const playSound = () => {
               try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext(); if (ctx.state === 'suspended') ctx.resume();
+                initGlobalAudio();
+                const ctx = globalAudioCtx;
+                if (!ctx) return;
                 const osc1 = ctx.createOscillator(); const gain1 = ctx.createGain();
                 osc1.connect(gain1); gain1.connect(ctx.destination);
                 osc1.type = "sine"; osc1.frequency.setValueAtTime(1046.50, ctx.currentTime);
@@ -2273,7 +2290,6 @@
                 osc2.type = "sine"; osc2.frequency.setValueAtTime(783.99, ctx.currentTime + 0.12);
                 gain2.gain.setValueAtTime(0.15, ctx.currentTime + 0.12); gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.27);
                 osc2.start(ctx.currentTime + 0.12); osc2.stop(ctx.currentTime + 0.27);
-                setTimeout(() => { if (ctx && ctx.state !== 'closed') ctx.close(); }, 500);
               } catch (e) {}
             };
             playSound(); setTimeout(() => { playSound(); }, 400);
@@ -2479,9 +2495,9 @@
       }
 
       try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) {
-          const ctx = new AudioContext();
+        initGlobalAudio();
+        const ctx = globalAudioCtx;
+        if (ctx) {
           const osc1 = ctx.createOscillator(); const gain1 = ctx.createGain();
           osc1.connect(gain1); gain1.connect(ctx.destination); osc1.type = "triangle"; osc1.frequency.setValueAtTime(1200, ctx.currentTime); 
           gain1.gain.setValueAtTime(0.3, ctx.currentTime); gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
@@ -2489,7 +2505,7 @@
 
           const osc2 = ctx.createOscillator(); const gain2 = ctx.createGain();
           osc2.connect(gain2); gain2.connect(ctx.destination); osc2.type = "sawtooth"; osc2.frequency.setValueAtTime(180, ctx.currentTime + 0.3);
-          osc2.frequency.linearRampToValueAtTime(60, ctx.currentTime + 0.7);
+          osc2.frequency.linearRampToValueAtTime(60, ctx.currentTime + 0.3);
           gain2.gain.setValueAtTime(0.2, ctx.currentTime + 0.3); gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.7);
           osc2.start(ctx.currentTime + 0.3); osc2.stop(ctx.currentTime + 0.7);
         }
@@ -2569,6 +2585,12 @@
     toQuizBtn.addEventListener("click", () => setScreen("quiz")); toDriveBtn.addEventListener("click", () => setScreen("drive"));
     quizOptions.addEventListener("click", (event) => { const target = event.target.closest(".option"); if (!target) return; answerQuiz(Number(target.dataset.index)); });
     quizPrevBtn.addEventListener("click", prevQuiz); quizNextBtn.addEventListener("click", nextQuiz);
+    document.getElementById("quizTopPrevBtn").addEventListener("click", prevQuiz);
+    document.getElementById("quizTopNextBtn").addEventListener("click", () => {
+      if (state.quizIndex === quizData.length - 1) { setScreen("drive"); return; }
+      state.quizIndex += 1;
+      renderQuiz();
+    });
     practicePrevBtn.addEventListener("click", () => { prevPracticeScenario(); }); practiceNextBtn.addEventListener("click", () => { nextPracticeScenario(); });
     document.getElementById("countdownStartBtn").addEventListener("click", () => { triggerCountdownSequence(); });
 
