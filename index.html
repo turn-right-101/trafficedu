@@ -2082,7 +2082,7 @@
       practicePlayerCar.style.bottom = "5%"; practicePlayerCar.style.left = "65%"; practicePlayerCar.style.transform = "translate(-50%, 0) rotate(0deg)";
       
       practicePedestrian.style.top = "-3%"; practicePedestrian.style.right = "14%"; practicePedestrian.style.bottom = "auto"; practicePedestrian.style.left = "auto";
-      practicePedestrian2.style.top = "-4%"; practicePedestrian2.style.right = "13%"; practicePedestrian2.style.bottom = "auto"; practicePedestrian2.style.left = "auto";
+      practicePedestrian2.style.top = "1%"; practicePedestrian2.style.right = "15%"; practicePedestrian2.style.bottom = "auto"; practicePedestrian2.style.left = "auto";
       practicePedestrianHoriz.style.left = "55%"; practicePedestrianHoriz.style.bottom = "44.5%";
       pedHoriz2.style.left = "43%"; pedHoriz2.style.bottom = "44.5%";
       pedHoriz3.style.left = "31%"; pedHoriz3.style.bottom = "44.5%";
@@ -2369,8 +2369,11 @@
         } else {
           if (activeData.hasPed) { 
             if (state.hasStoppedOnRed || state.progress >= 140) { 
-              if (state.pedPos < 45) { state.pedPos += 0.24; practicePedestrian.style.top = `${state.pedPos}%`; } 
-              if (state.pedPos2 < 52) { state.pedPos2 += 0.24; practicePedestrian2.style.top = `${state.pedPos2}%`; }
+              if (state.pedPos < 45) { state.pedPos += 0.26; practicePedestrian.style.top = `${state.pedPos}%`; } 
+              if (state.pedPos2 < 52) { 
+  state.pedPos2 += 0.36; 
+  practicePedestrian2.style.top = `${state.pedPos2 + 5}%`; 
+}
             } 
           }
         }
@@ -2653,9 +2656,9 @@
     window.showHintModal = function() {
       clearInterval(state.gameInterval);
       
-      let hintTitle = "💡 우회전 공식 힌트 💡";
-      let hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;"><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 전방 차량 신호등 기준</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• <span style="color: #ef4444;">빨간불</span>이면 무조건 정지선 앞 <span style="color: #ef4444;">일시정지!</span></span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-bottom: 12px;">• 초록불이면 보행자 살피며 서행 통과!</span><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-top: 15px; margin-bottom: 8px;">🚨 우회전 시 (보행자 기준)</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 횡단보도에 사람이 <span style="color: #ef4444;">있으면</span> 무조건 <span style="color: #ef4444;">일시정지!</span></span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 횡단보도에 사람이 없으면 서행하며 우회전!</span></div>`;
-      let hintBottom = ["정지선 일시정지란, 바퀴 속도가 완전히 0 km/h가 되는 것을 말합니다."];
+      let hintTitle = "💡 우회전 공식 힌트 💡"; 
+      let hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;"><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 전방 차량신호가</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• <span style="color: #ef4444;">빨간불</span>이면 <span style="color: #ef4444;">일시정지</span> 후 우회전</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-bottom: 12px;">• <span style="color: #22c55e;">초록불</span>이면 <span style="color: #22c55e;">서행</span>하며 우회전</span><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-top: 15px; margin-bottom: 8px;">🚨 횡단보도에 </span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #ef4444;">있으면</span> 반드시 <span style="color: #ef4444;">일시정지</span></span></span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #22c55e;">없으면</span> <span style="color: #22c55e;">서행</span>하며 통과</span></div>`;
+      let hintBottom = ["<div style=\"text-align: center;\">정지선 일시정지란, 바퀴가 완전히 정지해 <br> 차량 속도가 0km/h가 되는 것을 말합니다.</div>"];
 
       if (isAdvancedMode && currentAdvancedList[state.advancedIndex]) {
         const activeData = currentAdvancedList[state.advancedIndex];
