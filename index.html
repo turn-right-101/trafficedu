@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta property="og:title" content="현직 교통경찰이 직접 만든 [교차로 우회전 참교육 앱] 입니다.">
-  <meta property="og:description" content="횡단보도 사고는 형사처벌 대상인 12대 중과실! 공유해 주세요">
+  <meta property="og:description" content="횡단보도 사고(형사처벌)는 12대 중과실! 주변에 공유해 주세요">
   <meta property="og:image" content="assets/police.png">
   <title>현직 교통경찰이 직접 만든 우회전 교육앱</title>
   <style>
@@ -754,7 +754,7 @@
 
     .school-zone-sign {
       position: absolute;
-      bottom: 70%;
+      bottom: 73%;
       left: 32%;
       background: #ef4444;
       color: #fff;
@@ -1133,10 +1133,10 @@
           교차로 보행자 사고는 12대 중과실 사고로 형사처벌 대상이 됩니다. 그럼에도 불구하고 <br><span style="color: #ef4444; font-weight: bold;"> 우회전 통행방법을 정확히 인지하고 있는<br> 운전자는 0.3%에 불과</span>하다는 과거 언론보도가 있을 정도로 운전자분들의 우회전 통행방법 이해도는 낮은편입니다.<br><br>
           이에, 글과 그림으로 많은 홍보를 하였지만 어려워 하시는 분들이 계셔서 앱을 만들게 되었습니다.<br> 도움이 되시길 바랍니다.
         </div>
-        <div class="copyright-title">Copyright 2026. 해남경찰서. All rights reserved.</div>
+        <div class="copyright-title">Copyright 해남경찰서.</div>
         <div class="copyright-content">
           본 앱은 공공누리 제4유형(출처표시·상업용금지·변경금지)에 따라 이용할 수 있습니다. 
-          <span class="copyright-highlight">무단 복제, 상업적 이용 및 소스코드 변형 후 재배포를 엄격히 금지합니다.</span>
+          <span class="copyright-highlight">상업적 이용 및 소스코드 변형 후 재배포를 엄격히 금지합니다.</span>
         </div>
         <button type="button" class="copyright-btn" id="copyrightConfirmBtn">확인 (닫기)</button>
       </div>
@@ -1200,7 +1200,7 @@
         <h2 style="font-size: 26px; font-weight: 900; color: #facc15; margin: 0 0 12px 0; word-break: keep-all;">🏆 베스트 드라이버 인증</h2>
         <p style="font-size: 15px; font-weight: 800; line-height: 1.5; color: #f8fafc; margin: 0 0 12px 0; word-break: keep-all;">
           축하합니다! <br>
-          우회전 교육을 이수하셨습니다 <br>
+          우회전 기본 교육을 이수하셨습니다 <br>
           <span style="background-color: #2563eb; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 15px; display: inline-block; margin-top: 5px;">"준법 운전은 선진국의 척도입니다."</span>
         </p>
         
@@ -1222,7 +1222,7 @@
         </div>
       </div>
 
-      <div class="topbar" style="font-size: 14px;">안전한 우회전 통행방법! &lt;해남경찰서 교통과&gt;</div>
+      <div class="topbar" style="font-size: 14px;">교차로 우회전 참교육 앱 &lt;Copyright 해남경찰서&gt;</div> 
 
       <div class="tabs">
         <button class="tab-btn active" data-screen="video">1. 영상 시청</button>
@@ -1464,7 +1464,7 @@
             </button>
             
             <button class="btn" onclick="startAdvancedCourse(2)" style="min-height: 46px; background: linear-gradient(180deg, #b91c1c, #7f1d1d) !important; border: 2px solid #fca5a5 !important; color: #ffe4e6 !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
-              <span style="font-weight: 900 !important; color: #ffe4e6 !important;">2. 신호등 없는 어린이보호구역 / 우회전</span> <span style="font-weight: 900 !important; color: #ffe4e6 !important;">▶</span>
+              <span style="font-weight: 900 !important; color: #ffe4e6 !important;">2. 어린이 보호구역 / 우회전</span> <span style="font-weight: 900 !important; color: #ffe4e6 !important;">▶</span>
             </button>
 
             <button class="btn" onclick="startAdvancedCourse(5)" style="min-height: 46px; background: linear-gradient(180deg, #4c1d95, #2e1065) !important; border: 2px solid #ddd6fe !important; color: #f5f3ff !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
@@ -1544,10 +1544,10 @@
     }
 
     const quizData = [
-      { image: "assets/q1.jpg", question: "차량신호등이 적색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 정지선에서 일시정지 후 통과한다.", "2. 일시정지 없이 통과한다."], answer: 0, explain: "차량신호가 빨간불이면 무조건 일시정지 해야합니다." },
-      { image: "assets/q3.jpg", question: "차량신호등이 초록색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 보행자 유무를 살피면서 서행으로 통과한다.", "2. 정지선에서 일지정지 후 통과한다."], answer: 0, explain: "차량신호가 초록불인경우 일시정지 의무는 없습니다." },
-      { image: "assets/q5.jpg", question: "초록불인데 횡단보도에 보행자가 없습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자가 없는것이 확실하면 서행으로 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
-      { image: "assets/q2.jpg", question: "초록불, 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1. 보행자가 인도까지 올라가면 서행으로 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
+      { image: "assets/q1.jpg", question: "차량신호등이 빨간색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 정지선에서 일시정지 후 통과한다.", "2. 일시정지 없이 통과한다."], answer: 0, explain: "차량신호가 빨간불이면 무조건 일시정지 해야합니다." },
+      { image: "assets/q3.jpg", question: "차량신호등이 초록색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. (보행자 유무를 살피면서) 서행으로 통과한다.", "2. 정지선에서 일지정지 후 통과한다."], answer: 0, explain: "차량신호가 초록불인경우 일시정지 의무는 없습니다." },
+      { image: "assets/q5.jpg", question: "초록불인데 횡단보도에 보행자가 없습니다.<br>어떻게 해야 할까요?", options: ["1. 주변을 살피면서 서행으로 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
+      { image: "assets/q2.jpg", question: "초록불 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1.보행자가 인도까지 올라가 안전해지면 통과한다.", "2. 보행자 신호가 빨간불로 바뀔때까지 기다린다."], answer: 0, explain: "횡단보도를 건너려는 사람 또는 현재 건너는 사람이 없으면 서행으로 통과하세요." },
       { image: "assets/q4.jpg", question: "첫번째 횡단보도에 보행자가 있습니다.<br>어떻게 해야 할까요?", options: ["1.보행자가 인도까지 올라가 안전해지면 통과한다.", "2.보행자 신호가 빨간불로 바뀔때 까지 기다린다."], answer: 0, explain: "첫 번째, 두 번째 횡단보도 상관없이 건너거나 건너려는 사람이 없으면 서행으로 통과하세요." }
     ];
 
@@ -1562,13 +1562,14 @@
     ];
 
     const advancedScenarios = [
-      { id: 11, course: 1, text: "심화1-1 우회전 신호등 [적색신호]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>우회전 전용 신호등 : <span style='color:#ef4444;'>적색 신호</span><br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isRtArrow: false, rtRed: true, hasPed: false, mainRed: true, pedGreen: false },
+      { id: 11, course: 1, text: "심화1-1 우회전 신호등 [빨간불]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>우회전 전용 신호등 : <span style='color:#ef4444;'>적색 신호</span><br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isRtArrow: false, rtRed: true, hasPed: false, mainRed: true, pedGreen: false },
       { id: 10, course: 1, text: "심화1-2 우회전 신호등 [우회전 ▶]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>우회전 전용 신호등 : <span style='color:#22c55e;'>녹색 우회전(▶)</span><br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isRtArrow: true, rtRed: false, hasPed: false, mainRed: false, pedGreen: false },
-      { id: 20, course: 2, text: "심화2 신호등 없는 스쿨존 [사람없음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'><span style='color:#ef4444;'>어린이보호구역(스쿨존)</span> 신호등 없음<br>보행자 : 없음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, hasPed: false, mainRed: false, pedGreen: false },
+      { id: 20, course: 2, text: "심화2-1 신호등 없는 스쿨존 [사람없음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'><span style='color:#ef4444;'>어린이보호구역(스쿨존)</span> 신호등 없음<br>보행자 : 없음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, isNoSignalSchool: true, hasPed: false, mainRed: false, pedGreen: false },
+      { id: 21, course: 2, text: "심화2-2 신호등 있는 스쿨존 [사람있음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>차량 신호 : 빨간불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 30, course: 3, text: "심화4-1 신호등 없는 일반교차로 /사람있음", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>신호등 없는 교차로<br>보행자 : 있음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isNoSignal: true, hasPed: true, mainRed: false, pedGreen: false },
       { id: 31, course: 3, text: "심화4-2 신호등 없는 일반교차로 /사람없음", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>신호등 없는 교차로<br>보행자 : 없음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isNoSignal: true, hasPed: false, mainRed: false, pedGreen: false },
-      { id: 50, course: 5, text: "심화3 대각선 횡단보도 [사람있음]", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>대각선 횡단보도 / 전체 초록불 <br>보행자 : 사방 통행 중<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, isDiagonalMode: true },
-      { id: 40, course: 4, text: "심화5-1 적색불+좌회전(←) 동시점등", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>빨간불 + 좌회전(←) / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, leftArrowOn: true, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 50, course: 5, text: "심화3 대각선 횡단보도 [사람있음]", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>대각선 횡단보도 / 전체 초록불 <br>보행자 : 통행 중<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, isDiagonalMode: true },
+      { id: 40, course: 4, text: "심화5-1 삘간불+좌회전(←) 동시점등", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>빨간불 + 좌회전(←) / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, leftArrowOn: true, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 41, course: 4, text: "심화5-2 초록불+좌회전(←) 동시점등", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>초록불 + 좌회전(←) / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, leftArrowOn: true, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
     ];
 
@@ -1803,7 +1804,7 @@
       const pedLightBox = document.getElementById("ped-traffic-light");
 
       if (isAdvancedMode) {
-        if (currentAdvancedList[state.advancedIndex] && currentAdvancedList[state.advancedIndex].course === 4) {
+        if (currentAdvancedList[state.advancedIndex] && (currentAdvancedList[state.advancedIndex].course === 4 || currentAdvancedList[state.advancedIndex].id === 21)) {
           if (mainLightBox) mainLightBox.classList.remove("hidden");
           if (pedLightBox) pedLightBox.classList.remove("hidden");
         } else {
@@ -1811,11 +1812,36 @@
           if (pedLightBox) pedLightBox.classList.add("hidden");
         }
         
-        if (activeData.isSchool) document.getElementById("advancedSchoolZoneSign").classList.remove("hidden");
+        const schoolSign = document.getElementById("advancedSchoolZoneSign");
+        if (activeData.isSchool) {
+          schoolSign.classList.remove("hidden");
+          if (activeData.id === 21) {
+            schoolSign.style.backgroundColor = "#2563eb";
+            schoolSign.innerHTML = `
+              <span class="top-line">신호등이 있는</span>
+              <span class="bottom-line">어린이 보호구역</span>
+              <span class="top-line">(노랑색 횡단보도)</span>
+            `;
+          } else {
+            schoolSign.style.backgroundColor = "#ef4444";
+            schoolSign.innerHTML = `
+              <span class="top-line">신호등이 없는</span>
+              <span class="bottom-line">어린이 보호구역</span>
+              <span class="top-line">(노랑색 횡단보도)</span>
+            `;
+          }
+        }
       } else {
         if (mainLightBox) mainLightBox.classList.remove("hidden");
         if (pedLightBox) pedLightBox.classList.remove("hidden");
 
+        lightRed.classList.toggle("active", activeData.mainRed);
+        lightGreen.classList.toggle("active", !activeData.mainRed);
+        pedRed.classList.toggle("active", !activeData.pedGreen);
+        pedGreen.classList.toggle("active", activeData.pedGreen);
+      }
+
+      if (isAdvancedMode && currentAdvancedList[state.advancedIndex] && currentAdvancedList[state.advancedIndex].id === 21) {
         lightRed.classList.toggle("active", activeData.mainRed);
         lightGreen.classList.toggle("active", !activeData.mainRed);
         pedRed.classList.toggle("active", !activeData.pedGreen);
@@ -1952,7 +1978,8 @@
           practicePedestrian.classList.add("hidden"); 
           practicePedestrian2.classList.add("hidden"); 
         }
-      }if (state.practiceIndex === 6 && !isAdvancedMode) {
+      }
+      if (state.practiceIndex === 6 && !isAdvancedMode) {
         document.getElementById("ped-first-red").classList.remove("active");
         document.getElementById("ped-first-green").classList.add("active");
         document.getElementById("ped-traffic-light-first").classList.remove("hidden");
@@ -1973,29 +2000,11 @@
       if (isAdvancedMode && activeData.isDiagonalMode) {
         practicePedestrianHoriz.classList.remove("hidden");
         pedHoriz2.classList.remove("hidden");
-        practicePedestrian.classList.remove("hidden");
-        practicePedestrian2.classList.remove("hidden");
-        pedHoriz3.classList.remove("hidden");
 
         practicePedestrianHoriz.style.left = "20%";
         practicePedestrianHoriz.style.bottom = "88%";
         pedHoriz2.style.left = "14%";
         pedHoriz2.style.bottom = "88%";
-
-        practicePedestrian.innerHTML = "🚶‍♂️";
-        practicePedestrian.style.left = "32%";
-        practicePedestrian.style.top = "auto";
-        practicePedestrian.style.bottom = "40%";
-
-        practicePedestrian2.innerHTML = "🏃";
-        practicePedestrian2.style.left = "65%";
-        practicePedestrian2.style.top = "auto";
-        practicePedestrian2.style.bottom = "88%";
-        
-        pedHoriz3.innerHTML = "🚶‍♀️";
-        pedHoriz3.style.left = "70%";
-        pedHoriz3.style.top = "auto";
-        pedHoriz3.style.bottom = "93%";
       } else {
         if (activeData.hasPed) { 
           practicePedestrian.classList.remove("hidden"); 
@@ -2146,7 +2155,10 @@
       
       const activeData = currentPracticeScenario();
 
-      if (state.progress > 88 && state.progress < 160 && state.currentSpeed === 0) { 
+const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state.practiceIndex === 4 || state.practiceIndex === 5)) || (isAdvancedMode && (activeData.id === 10 || activeData.id === 41));
+      const maxCheckProgress = isGreenDriveMode ? 310 : 160;
+
+      if (state.progress > 88 && state.progress < maxCheckProgress && state.currentSpeed === 0) { 
         if (activeData.mainRed || activeData.rtRed || activeData.isSchool) { 
           stopTimer.textContent = activeData.isSchool ? "스쿨존 정지선 일시정지 성공!" : "일시정지 성공, 보행자 살피며 우회전"; 
           if (!state.hasStoppedOnRed) {
@@ -2210,31 +2222,40 @@
           if (!state.hasStoppedOnRed) {
             triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]);
           } else {
-            triggerPenalty("🚨 보행자 보호 의무 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반<br>(승용차 기준) 범칙금 6만원 / 벌점 10점</div>", ["횡단보도를 건너는 사람이 있다면 무조건 완전 정지 상태를 유지해야 합니다."]);
+            triggerPenalty("🚨 보행자 보호 의무 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반<br>(승용차 기준) 범칙금 6만원 / 벌점 10점</div>", ["횡단보도를 건너는 사람이 있다면 무조건 <span style='color: #ef4444; font-weight: bold;'>일시정지 후 완전 정지 상태를 유지</span>해야 합니다."]);
           }
           return;
         }
 
         if (activeData.rtRed && !isArrowActive && !state.hasStoppedOnRed) {
-          triggerPenalty("🚨 우회전 전용신호 위반", "<div style='background-color:#f59e0b; color:#111; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["우회전 전용 신호등이 설치된 곳에서 적색 신호일 때는 보행자가 없어도 무조건 멈춰야 합니다."]);
+          triggerPenalty("🚨 우회전 전용신호 위반", "<div style='background-color:#f59e0b; color:#111; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["<div style='text-align: center;'> 우회전 신호등 차량신호가 <span style='color: #ef4444; font-weight: bold;'>빨간불</span>인 경우 차량을<br> 일시정지 후 <span style='color: #ef4444; font-weight: bold;'>정지상태를 유지</span>해야 합니다.</div>"]);
           return;
         }
         if (activeData.rtRed && !isArrowActive && state.hasStoppedOnRed) {
-          triggerPenalty("🚨 우회전 전용신호 위반(대기불량)", "<div style='background-color:#f59e0b; color:#111; padding:10px; border-radius:8px; font-weight:900; font-size:16.5px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["우회전 신호가 적색인 경우 정지선에 멈춘 뒤, 초록색 우회전 화살표로 바뀔 때까지 기다려야 합니다."]);
+          triggerPenalty("🚨 우회전 전용신호 위반(대기)", "<div style='background-color:#f59e0b; color:#111; padding:10px; border-radius:8px; font-weight:900; font-size:16.5px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["<div style='text-align:center;'>우회전 신호가 빨간불인 경우 정지선에 멈춘 뒤<br> <span style='color: #ef4444; font-weight: bold;'>우회전 신호로 바뀔 때까지 기다려야 합니다.</span></div>"]);
           return;
         }
-        if (activeData.isSchool && !state.hasStoppedOnRed) {
-          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점</div>", ["어린이 보호구역에서<br><br> 신호등이 있는 경우 : 일반적인 통행방법(위 3.실습 탭의 1~7 통행 방법)에 따라 통행하면 되고 <br><br> 신호등이 없는 경우 : 모든 횡단보도에서 보행자가 없어도 무조건 일시정지(0km/h)해야 합니다."]);
+        if (activeData.isNoSignalSchool && !state.hasStoppedOnRed) {
+          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점</div>", [`
+            <div style="background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; text-align: left;">
+              <span style="font-size: 15px; font-weight: 900; color: #60a5fa; display: block; margin-bottom: 4px;">🚦 신호등이 있는 경우</span>
+              <span style="font-size: 13.5px; font-weight: 800; color: #e2e8f0; line-height: 1.5; display: block;">신호등이 있는 일반 교차로와 동일한 방법으로<br> 통행(상단 [3.실습] 탭 상황 1~7 참고)</span>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px 12px; text-align: left;">
+              <span style="font-size: 15px; font-weight: 900; color: #f87171; display: block; margin-bottom: 4px;">🛑 신호등이 없는 경우</span>
+              <span style="font-size: 13.5px; font-weight: 800; color: #e2e8f0; line-height: 1.5; display: block;">횡단보도 마다 <span style="color: #fca5a5; font-weight: 900;">일단정지!!</span><br>보행자가 없어도 <span style="color: #ef4444; font-weight: 900;">무조건 일시정지(0 km/h)</span></span>
+            </div>
+          `]);
           return;
         }
-        if (activeData.mainRed && !activeData.rtRed && !activeData.isSchool && !state.hasStoppedOnRed) { 
+        if (activeData.mainRed && !activeData.rtRed && !activeData.isNoSignalSchool && !state.hasStoppedOnRed) { 
           triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
           return; 
         } 
         state.mainLineCleared = true; 
       }
 
-      if (isAdvancedMode && activeData.isSchool) {
+      if (isAdvancedMode && activeData.isNoSignalSchool) {
         if (state.progress >= 330 && state.progress <= 355) {
           if (state.currentSpeed === 0 && !state.hasStoppedSecond) {
             state.hasStoppedSecond = true; 
@@ -2257,7 +2278,7 @@
           }
         }
         if (state.progress > 355 && !state.hasStoppedSecond) {
-          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점</div>", ["신호등이 없는 어린이보호구역 내 모든 횡단보도에서는 항상 일시정지(0km/h)해야 합니다."]);
+          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점</div>", ["신호등이 없는 어린이보호구역 내 모든 횡단보도에서는 <span style='color:#ef4444; font-weight:900;'>무조건 항상!! 일시정지(0km/h)</span>해야 합니다."]);
           return;
         }
       }
@@ -2328,15 +2349,10 @@
             practicePedestrianHoriz.style.left = `${groupA_X}%`;
             practicePedestrianHoriz.style.bottom = `${groupA_Y}%`; 
             pedHoriz2.style.left = `${groupA_X}%`;
-            pedHoriz2.style.bottom = `${groupA_Y + 6}%`; 
-
-            practicePedestrian.classList.add("hidden");
-
-            practicePedestrian2.classList.add("hidden");
-            pedHoriz3.classList.add("hidden");
+            pedHoriz2.style.bottom = `${groupA_Y + 12}%`;
 
             if (state.progress >= 160) {
-              if (groupA_Y > 50) {   
+              if (groupA_Y > 36) {   
                 activeData.hasPed = true;
                 if (currentAdvancedList[state.advancedIndex]) {
                   currentAdvancedList[state.advancedIndex].hasPed = true;
@@ -2386,7 +2402,7 @@
         } 
         if (activeData.hasPed && state.currentSpeed > 0) {
           if ((state.pedPos > 9 && state.pedPos < 36) || (state.pedPos2 > 9 && state.pedPos2 < 36)) {
-            triggerPenalty("🚨 보행자 보호 의무 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반<br>(승용차 기준) 범칙금 6만원 / 벌점 10점</div>", ["횡단보도를 건너는 사람이 있다면 무조건 완전 정지 상태를 유지해야 합니다."]); 
+            triggerPenalty("🚨 보행자 보호 의무 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반<br>(승용차 기준) 범칙금 6만원 / 벌점 10점</div>", ["횡단보도를 건너는 사람이 있다면 무조건 <span style='color: #ef4444; font-weight: bold;'>일시정지 후 완전 정지 상태를 유지</span>해야 합니다."]);
             return; 
           }
         } 
@@ -2399,15 +2415,16 @@
         
         if (isAdvancedMode) {
           title = "🏆 심화편 준법운전 성공! 🏆";
-          if (activeData.id === 11) items = ["우회전 전용 신호등 적색 신호를 준수하여 정지선 일시정지, 이후 좌회전 신호에 따라 서행으로 통과"];
-          else if (activeData.id === 10) items = ["우회전 전용 신호등의 녹색화살표(▶) 신호를 올바르게 식별하여 서행 통과 성공!"];
-          else if (activeData.isSchool) items = ["<div style='text-align: center; width: 100%;'>잘 하셨습니다! / 신호등 없는<br>어린이보호구역 (스쿨존)에서는 항상 일시정지!</div>"];
-          else if (activeData.isNoSignal && activeData.hasPed) items = ["신호등이 없는 교차로에서 횡단보도를 건너는<br> 보행자를 위해 안전하게 일시정지 후 통과 성공!"];
-          else if (activeData.isNoSignal && !activeData.hasPed) items = ["신호등이 없는 교차로에서 보행자가 없음을 확인 후 서행 통과"];
+          if (activeData.id === 11) items = ["우회전 전용 신호등 <span style='color: #ef4444; font-weight: bold;'>적색 신호</span>에 따라 <span style='color: #ef4444; font-weight: bold;'>일시정지 후 대기</span> / 이후 <span style='color: #22c55e; font-weight: bold;'>좌회전 신호</span>에 따라 <span style='color: #22c55e; font-weight: bold;'>서행</span> 통과"];
+          else if (activeData.id === 10) items = ["<div style='text-align: center;'>우회전 전용 신호등의<br> 우회전 신호에 따라 서행으로 교차로 통과</div>"];
+          else if (activeData.id === 21) items = ["🔴 차량 <span style='color:#ef4444; font-weight:bold;'>적색</span> 신호 시 정지선 <span style='color:#ef4444; font-weight:bold;'>일시정지</span>", "🚶 보행자가 <span style='color:#22c55e; font-weight:bold;'>완전히 통과할 때까지</span> 정지 대기", "🟢 스쿨존 전체에서 서행 운전"];
+          else if (activeData.isNoSignalSchool) items = ["<div style='text-align: center; width: 100%;'>꼭 기억하세요!! / 신호등 없는<br>어린이보호구역(스쿨존) 에서는 항상 일시정지!</div>"];
+          else if (activeData.isNoSignal && activeData.hasPed) items = ["신호등이 없는 교차로에서 횡단보도를 건너는<br> 보행자를 위해 안전하게 <span style='color:#ef4444; font-weight:bold;'>일시정지 후 통과</span> 성공!"];
+          else if (activeData.isNoSignal && !activeData.hasPed) items = ["<div style=\"text-align: center; width: 100%;\">신호등이 없는 교차로에서<br> 보행자가 없음을 확인 후 서행 통과</div>"];
           else if (activeData.id === 40) items = ["🔴 신호에 <span style='color:#ef4444; font-weight:bold;'>적색불이 있으므로</span> 정지선 <span style='color:#ef4444; font-weight:bold;'>일시정지</span>!", "🟢 일시정지 후 보행자가 없음을 확인하고 서행"];
-          else if (activeData.id === 41) items = ["🟢 <span style='color:#22c55e; font-weight:bold;'>직진(🟢) + 좌회전(←)</span> 동시 신호 시 일시정지의무는 없음", "⚠️ 우회전 시 보행자 유무를 살피며 <span style='color:#22c55e; font-weight:bold;'>서행</span> 통과"];
+          else if (activeData.id === 41) items = ["🟢 <span style='color:#22c55e; font-weight:bold;'>초록불(🟢)</span>이</span> 있으므로 일시정지의무는 없음", "⚠️ 우회전 시 보행자 유무를 살피며 <span style='color:#22c55e; font-weight:bold;'>서행</span> 통과"];
           if (activeData.isDiagonalMode) {
-            items.push("<div style='text-align: center; width: 100%; margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.15); font-size: 14.5px; font-weight: 900; color: #facc15;'>💡 명심하세요 대각선 횡단보도에서는 <span style='color: #ef4444; font-weight: bold;'>전체<br> 구역에 보행자가 한명이라도 있으면 정지.!!</span><br><br>그래서 <span style='color: #22c55e; font-weight: bold;'>전체 구역이 보이지 않는 곳</span>이라면 차량신호가 <span style='color: #22c55e; font-weight: bold;'>초록불</span>로 바뀔때까지<br> <span style='color: #22c55e; font-weight: bold;'>기다리는 것을 권장</span>합니다. </div>");
+            items.push("<div style='text-align: center; width: 100%; margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.15); font-size: 14.5px; font-weight: 900; color: #facc15;'>💡 명심하세요 대각선 횡단보도에서는 <span style='color: #ef4444; font-weight: bold;'>전체<br> 구역에 보행자가 한명이라도 있으면 정지.!!</span><br><br>그래서 <span style='color: #22c55e; font-weight: bold;'>전체 구역이 보이지 않는 곳</span>이라면<br> 차량신호가 <span style='color: #22c55e; font-weight: bold;'>초록불</span>로 바뀔때까지<br> <span style='color: #22c55e; font-weight: bold;'>기다리는 것을 권장</span>합니다. </div>");
           }
           if (state.advancedIndex < currentAdvancedList.length - 1) {
             nextScenarioBtn.textContent = "다음";
@@ -2432,7 +2449,7 @@
           else if (state.practiceIndex === 1) { title = "🥇 준법 운전 성공 (상황 2)"; items = ["🔴 차량 <span style='color:#ef4444; font-weight:bold;'>적색</span> 신호 시 정지선 <span style='color:#ef4444; font-weight:bold;'>일시정지</span>", "🚶 보행자가 <span style='color:#22c55e; font-weight:bold;'>완전히 통과할 때까지</span> 정지 대기", "🟢 보행자가 인도로 올라간 후 서행 통과"]; } 
           else if (state.practiceIndex === 2) { title = "🥇 준법 운전 성공 (상황 3)";  items = ["🔴 차량 <span style='color:#ef4444; font-weight:bold;'>적색</span> 신호 시 정지선 <span style='color:#ef4444; font-weight:bold;'>일시정지</span>", "💡 <span style='color:#22c55e; font-weight:bold;'>건너는 사람이 없음을 확인</span>", "🟢 교차로에서 서행으로 우회전 통과"]; } 
           else if (state.practiceIndex === 3) { title = "🥇 준법 운전 성공 (상황 4)";  items = ["🟢 차량 신호가 초록불이면 일시정지 의무는 없음", "🚶 횡단보도에 보행자 없음을 확인", "⚠️ 교차로 전체 구역에서 <span style='color:#22c55e; font-weight:bold;'>서행 우회전</span> 통과"]; } 
-          else if (state.practiceIndex === 4) { title = "🥇 준법 운전 성공 (상황 5)"; items = ["🟢 전방 차량 신호가 초록불인 경우에도 서행", "🚶 보행자가 <span style='color:#22c55e; font-weight:bold;'>완전히 통과할 때까지</span> 정지 대기", "🟢 보행자가 인도로 올라간 후 서행 출발"]; } 
+          else if (state.practiceIndex === 4) { title = "🥇 준법 운전 성공 (상황 5)"; items = ["🟢 전방 차량 신호가 초록불인 경우에도 서행", "🚶 보행자가 <span style='color:#22c55e; font-weight:bold;'>완전히 통과할 때까지</span> 정지 대기", "🟢 보행자가 인도로 올라간 후 서행 통과"]; } 
           else if (state.practiceIndex === 5) { 
             title = "🥇 준법 운전 성공 (상황 6)"; 
             items = ["🟢 차량 신호가 초록불이면 일시정지 의무는 없음  ", "🚶 횡단보도에 보행자 없음을 확인", "⚠️ 교차로 전체 구역에서 <span style='color:#22c55e; font-weight:bold;'>서행 우회전</span> 통과"]; 
@@ -2458,7 +2475,7 @@
               console.log("🔒 보류: 1~6단계 중 아직 완료하지 않은 실습 단계가 남아있습니다.");
             }
             
-            nextScenarioBtn.textContent = "종료하기";
+            nextScenarioBtn.textContent = "기본교육 종료";
             nextScenarioBtn.onclick = function() {
               resultModal.classList.remove("show"); 
               document.getElementById("eduEndScreen").classList.remove("hidden"); 
@@ -2541,7 +2558,10 @@
     }
     function stopAccel() { state.isAcceling = false; accelBtn.classList.remove("active"); }
 
-    document.getElementById("startAppBtnBrand").addEventListener("click", () => { landingScreen.classList.add("hidden"); appShell.classList.remove("hidden"); });
+    document.getElementById("startAppBtnBrand").addEventListener("click", () => { 
+  document.getElementById("landingScreen").classList.add("hidden"); 
+  document.getElementById("appShell").classList.remove("hidden"); 
+});
     
     document.getElementById("openAdvancedMenuBtn").addEventListener("click", () => { 
       const advancedTabButton = Array.from(stepButtons).find(btn => btn.dataset.screen === "advanced");
@@ -2664,51 +2684,60 @@
         const activeData = currentAdvancedList[state.advancedIndex];
         
         if (activeData.course === 1) {
-          hintTitle = "💡 우회전 신호등 통행방법 힌트";
+          hintTitle = "💡 우회전 신호등 통행방법";
           hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;">
-            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 우회전 전용 신호등</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 우회전 신호등이 <span style="color: #ef4444;">적색(🔴)</span>인 경우: <br> 보행자나 다른 차가 없어도 <span style="color: #ef4444;">무조건 정지!</span></span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-top: 6px;">• 우회전 신호등이 <span style="color: #22c55e;">초록색 우회전(▶)</span>인 경우: <br> 신호에 맞춰 <span style="color: #22c55e;">서행하며 우회전</span> 가능!</span>
+            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 우회전 신호가 <span style="color: #ef4444;">빨간불(🔴)</span>인 경우</span>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 정지 후 계속 정지상태 유지</span> <br>
+            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 우회전 신호가 <span style="color: #22c55e;">우회전(▶)</span>인 경우</span>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-top: 6px;">• 신호에 맞춰 <span style="color: #22c55e;">서행하며 우회전</span></span>
           </div>`;
           hintBottom = ["<div style='text-align: center; width: 100%; font-weight: 900;'>우회전 전용 신호등이 있는경우<br>전용 신호등 지시에 따르면 됩니다.</div>"];
         } 
         else if (activeData.course === 2) {
-          hintTitle = "💡 신호등 없는 어린이 보호구역";
+          hintTitle = "💡 어린이 보호구역";
           hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;">
-            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 신호등 없는 어린이보호구역(스쿨존)에서는 횡단보도 마다 일단정지</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• <span style="color: #ef4444;"> 신호등 없는 스쿨존에서는 보행자가 없어도 무조건 일시정지(0 km/h)</span>해야 합니다!</span>
+            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 12px;">🚨 어린이 보호구역(스쿨존) 통행방법</span>
+            
+            <div style="background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;">
+              <span style="font-size: 15px; font-weight: 900; color: #60a5fa; display: block; margin-bottom: 4px;">🚦 신호등이 있는 경우</span>
+              <span style="font-size: 13.5px; font-weight: 800; color: #e2e8f0; line-height: 1.5; display: block;">신호등이 있는 일반 교차로와 동일한 방법으로 통행<span style="color: #93c5fd;"> (상단 [3.실습] 탭 상황 1~7 참고)</span></span>
+            </div>
+            
+            <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px 12px;">
+              <span style="font-size: 15px; font-weight: 900; color: #f87171; display: block; margin-bottom: 4px;">🛑 신호등이 없는 경우</span>
+              <span style="font-size: 13.5px; font-weight: 800; color: #e2e8f0; line-height: 1.5; display: block;">횡단보도 마다 <span style="color: #fca5a5; font-weight: 900;">일단정지!!</span><br>보행자가 없어도 <span style="color: #ef4444; font-weight: 900;">무조건 일시정지(0 km/h)</span></span>
           </div>`;
-          hintBottom = ["만약 신호등 없는 스쿨존에서 횡단보호를 여러번 <br> 지나간다면 그때 마다 매번 일시정지 해야합니다."];
+          hintBottom = ["<div style=\"text-align: center; width: 100%;\"> 신호등 없는 어린이보호구역에서 횡단보도를 여러번 지나간다면 그때 마다 매번 일시정지 해야합니다.</div>"];
         } 
         else if (activeData.course === 3) {
           hintTitle = "💡 신호등이 없는 교차로 통행 방법";
           hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;">
-            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 신호등 자체가 없는 교차로에서는</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #ef4444;">있으면 반드시 일시정지</span>하여<br> 안전을 확보한 뒤 통과합니다.</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-top: 6px;">• 보행자가 <span style="color: #22c55e;">없으면 일시 정지 의무는 없으나, 상시 서행</span>하세요.</span>
+            <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 신호등이 없는 교차로에서는</span>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #ef4444;">있으면 반드시 일시정지</span> 하여<br> 안전을 확보한 뒤 통과합니다.</span><br>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-top: 6px;">• 보행자가 <span style="color: #22c55e;">없으면 일시정지 의무는 없으나<br> 상시 서행</span>하세요.</span>
           </div>`;
-          hintBottom = ["보행자를 살피는 것과 언제든 즉시 멈출 수 있는<br> 속도로 서행하는 것이 가장 중요합니다."];
+          hintBottom = ["<div style=\"text-align: center; width: 100%;\">보행자를 살피는 것과 언제든 즉시 멈출 수 있는<br> 속도로 서행하는 것이 가장 중요합니다.</div>"];
         } 
         else if (activeData.course === 4) {
           hintTitle = "💡 좌회전 신호 시 우회전 방법";
           hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;">
             <span style="font-size: 16px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 차량 신호등에 <span style="color: #ef4444;">적색불이 함께</span> 켜진경우</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-bottom: 10px;">• <span style="color: #ef4444;">차량 신호가 적색불 이므로 정지선 앞에서<br> <span style="color: #ef4444; font-weight: bold;">일시정지</span> 후 통행하세요!</span>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-bottom: 10px;">• <span style="color: #fff;">차량 신호가 </span><span style="color: #ef4444;">적색불</span><span style="color: #fff;"> 이므로 정지선 앞에서<br> </span><span style="color: #ef4444; font-weight: bold;">일시정지</span><span style="color: #fff;"> 후 통행하세요!</span></span>
             <span style="font-size: 16px; font-weight: 900; color: #facc15; display: block; margin-top: 12px; margin-bottom: 8px;">🚨차량 신호등에 <span style="color: #22c55e;">초록불이 함께</span> 켜진 경우</span>
-            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 차량 신호가 초록불 이므로 정지선에서 일시정지 의무는 없고 <span style="color: #22c55e; font-weight: bold;">서행으로 우회전</span>하세요.</span>
+            <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 차량 신호가 <span style="color: #22c55e; font-weight: bold;">초록불</span> 이므로 정지선에서 일시정지 의무는 없고 <span style="color: #22c55e; font-weight: bold;">서행으로 우회전</span>하세요.</span>
           </div>`;
-          hintBottom = ["죄회전 신호는 좌회전 하는 운전자가 보는 것이라고 생각하면 이해가 쉬울것 같습니다."];
+          hintBottom = ["<div style=\"text-align: center; width: 100%;\">죄회전 신호는 좌회전을 하고자 하는 <br>운전자가 보는 것이라고 생각하면 이해가 쉽습니다.</div>"];
         }
         else if (activeData.course === 5) {
           hintTitle = "💡 대각선(x자) 횡단보도 통행방법";
           hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;">
             <span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 대각선 횡단보도는 하나의 횡단보도</span>
             <span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; line-height: 1.5;">
-              • 대각선 횡단보도는 교차로 전체가 <span style="color: #facc15; font-weight: bold;">하나의<br>  횡단보도와 같습니다.</span><br>
-              • 그래서 전체를 하나로 보아, 횡단보도 어디든 보행자가 있다면 차량을 <span style="color: #ef4444; font-weight: bold;">정지</span>해야 합니다.
+              • 대각선 횡단보도는 교차로 전체가 <span style="color: #facc15; font-weight: bold;">하나의<br>  횡단보도와 같습니다.</span><br><br>
+              • 그래서 횡단보도 어디든 보행자가 있다면 <br>차량을 <span style="color: #ef4444; font-weight: bold;">정지</span>해야 합니다.
             </span>
           </div>`;
-          hintBottom = ["대각선 횡돤보도에서 교차로내 보행자가 한명이라도 있다면 모든 차량은 <span style='color: #ef4444; font-weight: bold;'>통행 금지</span>입니다."];
+          hintBottom = ["<div style='text-align: center;'>교차로내 보행자가 한명이라도 있다면<br> 모든 차량은 <span style='color: #ef4444; font-weight: bold;'>통행 금지</span>입니다.</div>"];
         
         }
       }
