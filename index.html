@@ -2236,7 +2236,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           return;
         }
         if (activeData.isNoSignalSchool && !state.hasStoppedOnRed) {
-          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점</div>", [`
+          triggerPenalty("🚨 어린이보호구역 일시정지 위반", "<div style='background-color:#ef4444; color:#fff; padding:10px; border-radius:8px; font-weight:900; font-size:17px; margin-bottom:12px; text-align:center;'>⚠️ 도로교통법 제27조 보행자 보호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 10점 / 과태료 7만원</div>", [`
             <div style="background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; text-align: left;">
               <span style="font-size: 15px; font-weight: 900; color: #60a5fa; display: block; margin-bottom: 4px;">🚦 신호등이 있는 경우</span>
               <span style="font-size: 13.5px; font-weight: 800; color: #e2e8f0; line-height: 1.5; display: block;">신호등이 있는 일반 교차로와 동일한 방법으로<br> 통행(상단 [3.실습] 탭 상황 1~7 참고)</span>
@@ -2249,7 +2249,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           return;
         }
         if (activeData.mainRed && !activeData.rtRed && !activeData.isNoSignalSchool && !state.hasStoppedOnRed) { 
-          triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
+          triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 16.5px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>스쿨존 가중 시간대 (승용차 기준)<br> 범칙금 12만원 / 벌점 30점 / 과태료 13만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
           return; 
         } 
         state.mainLineCleared = true; 
@@ -2402,6 +2402,10 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
         } 
         if (activeData.hasPed && state.currentSpeed > 0) {
           if ((state.pedPos > 9 && state.pedPos < 36) || (state.pedPos2 > 9 && state.pedPos2 < 36)) {
+            if (isAdvancedMode && activeData.id === 21) {
+              triggerPenalty("🚨보행자 보호 의무 위반(스쿨존)", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반 스쿨존 가중 시간대 (승용차 기준)<br>범칙금 12만원 / 벌점 20점 / 과태료 7만원</div>", ["<div style='text-align: center; width: 100%;'>횡단보도를 건너는 사람이 있다면 무조건 <br> <span style='color: #ef4444; font-weight: bold;'>일시정지 후 정지 상태를 유지</span>해야 합니다.</div>"]);
+              return;
+            }
             triggerPenalty("🚨 보행자 보호 의무 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반<br>(승용차 기준) 범칙금 6만원 / 벌점 10점</div>", ["횡단보도를 건너는 사람이 있다면 무조건 <span style='color: #ef4444; font-weight: bold;'>일시정지 후 완전 정지 상태를 유지</span>해야 합니다."]);
             return; 
           }
