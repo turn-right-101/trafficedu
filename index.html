@@ -2249,7 +2249,11 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           return;
         }
         if (activeData.mainRed && !activeData.rtRed && !activeData.isNoSignalSchool && !state.hasStoppedOnRed) { 
-          triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 16.5px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>스쿨존 가중 시간대 (승용차 기준)<br> 범칙금 12만원 / 벌점 30점 / 과태료 13만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
+          if (isAdvancedMode && activeData.id === 21) {
+            triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 16.5px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>스쿨존 가중 시간대 (승용차 기준)<br> 범칙금 12만원 / 벌점 30점 / 과태료 13만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
+            return; 
+          }
+          triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
           return; 
         } 
         state.mainLineCleared = true; 
