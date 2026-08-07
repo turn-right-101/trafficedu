@@ -1428,7 +1428,7 @@
             <div id="practice-lead-car" class="hidden" style="position: absolute; bottom: 15%; left: 65%; width: 22px; height: 40px; background-color: #111111; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 14; transform: translate(-50%, 0) rotate(0deg); transform-origin: center center;">
               <div class="car-details">
                 <div class="lights-front"></div>
-                <div class="roof" style="background-color: #333333;"></div>
+                <div class="roof" style="background-color: #94a3b8;"></div>
                 <div class="wheel tl"></div>
                 <div class="wheel tr"></div>
                 <div class="wheel bl"></div>
@@ -1597,7 +1597,7 @@
       { id: 4, text: "차량신호 초록 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 5, text: "차량신호 초록 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 6, text: "횡단보도 연속 초록불 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 2개 횡단보도에 연속으로 보행자 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 7, text: "앞차 우회전 직후 연속 진행 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 빨간불에 앞차와 연달아 진행<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, hasLeadCar: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" }
+      { id: 7, text: "앞차와 연달아 우회전 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 빨간불에 앞차와 연달아 우회전<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, hasLeadCar: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" }
     ];
 
     const advancedScenarios = [
@@ -2341,7 +2341,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
             return; 
           }
           if (!isAdvancedMode && state.practiceIndex === 7) {
-            triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원<br><span style='color: #ef4444; font-size: 15px; display: block; margin-top: 6px;'>-차량이 연달아 진행하는 경우 <br> 차량별로 각각 일시정지 해야합니다.</span></div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
+            triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원<br><span style='color: #ef4444; font-size: 18px; font-weight: 900; display: block; margin-top: 6px;'>차량이 연달아 진행하는 경우 <br> 차량별로 각각 일시정지 해야합니다.</span></div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
             return; 
           }
           triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
