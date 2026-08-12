@@ -48,10 +48,22 @@
     .phone {
       width: min(100vw, 430px);
       min-height: 100vh;
+      min-height: 100dvh;
       background: radial-gradient(circle at center, #101c33 0%, #060b14 100%);
       box-shadow: var(--shadow);
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
+    }
+
+    @media (max-height: 700px) {
+      .landing { padding: 14px 14px !important; }
+      .landing h1 { font-size: 26px !important; }
+      .landing-subtitle { font-size: 15px !important; margin-top: 6px !important; }
+      .landing-copy { font-size: 13px !important; line-height: 1.4 !important; margin-top: 8px !important; }
+      .landing-brand { height: 75px !important; margin-top: 10px !important; }
+      .landing-brand-text strong { font-size: 22px !important; }
+      .drive-map { height: 280px !important; }
     }
 
     .hidden { display: none !important; }
