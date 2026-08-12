@@ -56,14 +56,28 @@
       position: relative;
     }
 
-    @media (max-height: 700px) {
-      .landing { padding: 14px 14px !important; }
-      .landing h1 { font-size: 26px !important; }
-      .landing-subtitle { font-size: 15px !important; margin-top: 6px !important; }
-      .landing-copy { font-size: 13px !important; line-height: 1.4 !important; margin-top: 8px !important; }
-      .landing-brand { height: 75px !important; margin-top: 10px !important; }
-      .landing-brand-text strong { font-size: 22px !important; }
-      .drive-map { height: 280px !important; }
+    @media (max-height: 750px) {
+      .phone { overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+      .landing { padding: 14px 14px !important; justify-content: flex-start !important; }
+      .landing h1 { font-size: 24px !important; }
+      .landing-subtitle { font-size: 14px !important; margin-top: 4px !important; }
+      .landing-copy { font-size: 12.5px !important; line-height: 1.4 !important; margin-top: 6px !important; }
+      .landing-brand { height: auto !important; min-height: 65px !important; margin-top: 8px !important; padding: 6px 10px !important; }
+      .landing-brand-text strong { font-size: 20px !important; }
+      
+      .drive-map { height: clamp(180px, 28vh, 240px) !important; }
+      .drive-head { padding: 4px 6px !important; font-size: 12px !important; }
+      .drive-dashboard { padding: 4px 6px !important; }
+      .drive-dashboard .speed-box { font-size: 12px !important; }
+      .tutorial { margin: 4px 6px !important; padding: 6px !important; font-size: 11.5px !important; }
+      .pedals { gap: 6px !important; padding: 0 6px 6px !important; }
+      .pedal { min-height: 50px !important; }
+      
+      .quiz-question { font-size: 15px !important; }
+      .quiz-image { max-height: 120px !important; margin: 4px 0 !important; }
+      .options { gap: 5px !important; }
+      .option { padding: 8px 10px !important; font-size: 13px !important; }
+      .card { padding: 8px 10px !important; margin-bottom: 6px !important; }
     }
 
     .hidden { display: none !important; }
@@ -71,14 +85,15 @@
     .landing {
       position: absolute; 
       inset: 0; 
-      height: 100%; 
+      min-height: 100%; 
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 28px 22px;
+      padding: 20px 16px;
       background: radial-gradient(circle at center, #14233c 0%, #060a12 100%);
       z-index: 250; 
-      overflow: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       text-align: center;
     }
 
@@ -448,12 +463,14 @@
 
     .quiz-image {
       width: 100%;
-      height: 230px; 
+      max-height: 180px;
+      height: auto;
+      aspect-ratio: 16 / 9;
       border-radius: 14px;
-      margin: 12px 0;
+      margin: 10px 0;
       border: 1px solid rgba(255,255,255,0.12);
       display: block;
-      object-fit: fill; 
+      object-fit: contain; 
       background: #0a1020;
     }
 
@@ -564,7 +581,7 @@
     .drive-map {
       position: relative;
       width: 100%;
-      height: 350px;
+      height: clamp(210px, 32vh, 350px);
       background-color: #34495e;
       overflow: hidden;
     }
