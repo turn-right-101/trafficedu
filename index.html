@@ -890,6 +890,20 @@
       100% { opacity: 1; text-shadow: 0 0 15px #facc15, 0 0 25px #facc15; }
     }
 
+    @keyframes blink-4-times {
+      0% { opacity: 0; transform: translate(-50%, 0) scale(0.9); }
+      15% { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+      30% { opacity: 0.2; transform: translate(-50%, 0) scale(1.0); }
+      45% { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+      60% { opacity: 0.2; transform: translate(-50%, 0) scale(1.0); }
+      75% { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+      85% { opacity: 0.2; transform: translate(-50%, 0) scale(1.0); }
+      95%, 100% { opacity: 1; transform: translate(-50%, 0) scale(1.0); }
+    }
+    .animate-blink-3 {
+      animation: blink-4-times 4s ease-in-out forwards;
+    }
+
     .tutorial {
       margin: 8px 10px;
       border-radius: 12px;
@@ -1411,6 +1425,17 @@
             </div>
             <div id="myRightTurnSignCustom" class="school-zone-sign hidden" style="bottom: 47% !important; left: 70.1% !important; font-family: 'Malgun Gothic', '맑은 고딕', sans-serif !important; font-weight: bold !important; font-size: 13px !important; padding: 4px 8px !important; letter-spacing: -0.02em !important; white-space: nowrap !important; background: #ef4444 !important; color: #ffffff !important;">우회전 신호등</div>
 
+            <div id="practice-lead-car" class="hidden" style="position: absolute; bottom: 15%; left: 65%; width: 22px; height: 40px; background-color: #111111; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 14; transform: translate(-50%, 0) rotate(0deg); transform-origin: center center;">
+              <div class="car-details">
+                <div class="lights-front"></div>
+                <div class="roof" style="background-color: #94a3b8;"></div>
+                <div class="wheel tl"></div>
+                <div class="wheel tr"></div>
+                <div class="wheel bl"></div>
+                <div class="wheel br"></div>
+              </div>
+            </div>
+
             <div id="practice-player-car">
               <div class="car-details">
                 <div class="lights-front"></div>
@@ -1420,6 +1445,10 @@
                 <div class="wheel bl"></div>
                 <div class="wheel br"></div>
               </div>
+            </div>
+
+            <div id="scenario8-success-msg" class="hidden" style="position: absolute; bottom: 74%; left: 50%; transform: translate(-50%, 0); font-size: 15px; font-weight: 900; color: #fde68a; background: rgba(15, 23, 42, 0.9); border: 2px solid #facc15; padding: 6px 10px; border-radius: 8px; z-index: 25; text-align: center; white-space: nowrap; box-shadow: 0 0 12px #facc15;">
+              ✨ 차량별로 각각 일시정지 성공 ✨
             </div>
 
             <div id="practice-pedestrian" class="hidden">🚶</div>
@@ -1489,9 +1518,9 @@
             </button>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr; gap: 8px; width: 100%;">
-            <button class="btn btn-green" id="advancedRestartBtn" onclick="document.getElementById('finalRestartBtn').click();" style="min-height: 44px; font-size: 15px; font-weight: 900; box-shadow: 0 4px 12px rgba(34,197,94,0.3);">🔄 처음 화면으로 돌아가기</button>
-            <button class="btn btn-dark" id="advancedCloseBtn" onclick="document.getElementById('finalCloseBtn').click();" style="min-height: 44px; font-size: 15px; font-weight: 900; background: #334155;">❌ 완전히 종료하기</button>
+          <div style="display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; margin-top: 6px;">
+            <button class="btn" id="advancedRestartBtn" onclick="document.getElementById('finalRestartBtn').click();" style="min-height: 46px; font-size: 15px; font-weight: 900; background: linear-gradient(180deg, #16a34a 0%, #15803d 100%) !important; color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 14px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3) !important; cursor: pointer;">🔄 처음 화면으로 돌아가기</button>
+            <button class="btn" id="advancedCloseBtn" onclick="document.getElementById('finalCloseBtn').click();" style="min-height: 46px; font-size: 15px; font-weight: 900; background: linear-gradient(180deg, #334155 0%, #1e293b 100%) !important; color: #94a3b8 !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 14px; cursor: pointer;">❌ 완전히 종료하기</button>
           </div>
           
         </div>
@@ -1567,7 +1596,8 @@
       { id: 3, text: "차량신호 초록 / 보행신호 적색 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: false, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 4, text: "차량신호 초록 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 5, text: "차량신호 초록 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 6, text: "횡단보도 연속 초록불 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 2개 횡단보도에 연속으로 보행자 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" }
+      { id: 6, text: "횡단보도 연속 초록불 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 2개 횡단보도에 연속으로 보행자 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 7, text: "앞차와 연달아 우회전 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 빨간불에 앞차와 연달아 우회전<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, hasLeadCar: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" }
     ];
 
     const advancedScenarios = [
@@ -1641,6 +1671,8 @@
       advancedIndex: 0, 
       currentSpeed: 0, 
       progress: 0, 
+      leadProgress: 60,
+      leadStoppedTimer: 0,
       isBraking: false, 
       isAcceling: false, 
       hasStoppedOnRed: false, 
@@ -2089,7 +2121,7 @@
         }
       }
 
-      state.currentSpeed = 0; state.progress = 0; state.isBraking = false; state.isAcceling = false; state.hasStoppedOnRed = false; state.mainLineCleared = false; state.hasStoppedSecond = false;
+      state.currentSpeed = 0; state.progress = 0; state.leadProgress = 100; state.leadStoppedTimer = 0; state.isBraking = false; state.isAcceling = false; state.hasStoppedOnRed = false; state.mainLineCleared = false; state.hasStoppedSecond = false;
       
       state.pedPos = (state.practiceIndex === 5 && !isAdvancedMode) ? -6 : -3;
       state.pedPos2 = (state.practiceIndex === 5 && !isAdvancedMode) ? -5 : -4;
@@ -2099,6 +2131,18 @@
       hideResult();
       practicePlayerCar.style.bottom = "5%"; practicePlayerCar.style.left = "65%"; practicePlayerCar.style.transform = "translate(-50%, 0) rotate(0deg)";
       
+      const leadCarEl = document.getElementById("practice-lead-car");
+      if (leadCarEl) {
+        if (!isAdvancedMode && state.practiceIndex === 7) {
+          leadCarEl.classList.remove("hidden");
+          leadCarEl.style.bottom = `${5 + (100 * 0.145)}%`;
+          leadCarEl.style.left = "65%";
+          leadCarEl.style.transform = "translate(-50%, 0) rotate(0deg)";
+        } else {
+          leadCarEl.classList.add("hidden");
+        }
+      }
+      
       practicePedestrian.style.top = "-3%"; practicePedestrian.style.right = "14%"; practicePedestrian.style.bottom = "auto"; practicePedestrian.style.left = "auto";
       practicePedestrian2.style.top = "1%"; practicePedestrian2.style.right = "15%"; practicePedestrian2.style.bottom = "auto"; practicePedestrian2.style.left = "auto";
       practicePedestrianHoriz.style.left = "55%"; practicePedestrianHoriz.style.bottom = "44.5%";
@@ -2107,6 +2151,11 @@
       
       stopTimer.classList.add("hidden"); practiceSpeed.textContent = "0";
       brakeBtn.classList.remove("active"); accelBtn.classList.remove("active");
+      const sc8Msg = document.getElementById("scenario8-success-msg");
+      if (sc8Msg) {
+        sc8Msg.classList.add("hidden");
+        sc8Msg.classList.remove("animate-blink-3");
+      }
       
       setPracticeScenario();
       
@@ -2157,6 +2206,28 @@
       
       practiceSpeed.textContent = Math.round(state.currentSpeed);
       state.progress += state.currentSpeed * 0.13;
+
+      if (!isAdvancedMode && state.practiceIndex === 7) {
+        const leadCarEl = document.getElementById("practice-lead-car");
+        if (leadCarEl) {
+          if (!state.isControlLocked) {
+            if (state.leadProgress < 150) {
+              state.leadProgress += 5.4;
+            } else if (state.leadProgress >= 150 && state.leadProgress < 151) {
+              state.leadStoppedTimer += 0.1;
+              if (state.leadStoppedTimer >= 0.5) {
+                state.leadProgress = 152;
+              }
+            } else {
+              state.leadProgress += 3.1;
+            }
+          }
+
+          if (state.leadProgress < 310) { leadCarEl.style.bottom = `${5 + (state.leadProgress * 0.145)}%`; leadCarEl.style.left = "65%"; leadCarEl.style.transform = "translate(-50%, 0) rotate(0deg)"; }
+          else if (state.leadProgress < 380) { const turnPct = (state.leadProgress - 310) / 70; leadCarEl.style.bottom = `${50 + (Math.sin(turnPct * Math.PI / 2) * 8.5)}%`; leadCarEl.style.left = `${65 + ((1 - Math.cos(turnPct * Math.PI / 2)) * 13.5)}%`; leadCarEl.style.transform = `translate(-50%, 0) rotate(${turnPct * 90}deg)`; }
+          else { leadCarEl.style.bottom = "58.5%"; leadCarEl.style.left = `${78.5 + (((state.leadProgress - 380) / 100) * 20)}%`; leadCarEl.style.transform = "translate(-50%, 0) rotate(90deg)"; }
+        }
+      }
       
       if (state.progress < 310) { practicePlayerCar.style.bottom = `${5 + (state.progress * 0.145)}%`; practicePlayerCar.style.left = "65%"; practicePlayerCar.style.transform = "translate(-50%, 0) rotate(0deg)"; }
       else if (state.progress < 380) { const turnPct = (state.progress - 310) / 70; practicePlayerCar.style.bottom = `${50 + (Math.sin(turnPct * Math.PI / 2) * 8.5)}%`; practicePlayerCar.style.left = `${65 + ((1 - Math.cos(turnPct * Math.PI / 2)) * 13.5)}%`; practicePlayerCar.style.transform = `translate(-50%, 0) rotate(${turnPct * 90}deg)`; }
@@ -2172,6 +2243,13 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           stopTimer.textContent = activeData.isSchool ? "스쿨존 정지선 일시정지 성공!" : "일시정지 성공, 보행자 살피며 우회전"; 
           if (!state.hasStoppedOnRed) {
             state.hasStoppedOnRed = true;
+            if (!isAdvancedMode && state.practiceIndex === 7) {
+              const sc8Msg = document.getElementById("scenario8-success-msg");
+              if (sc8Msg) {
+                sc8Msg.classList.remove("hidden");
+                sc8Msg.classList.add("animate-blink-3");
+              }
+            }
             try {
               initGlobalAudio();
               const ctx = globalAudioCtx;
@@ -2260,6 +2338,10 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
         if (activeData.mainRed && !activeData.rtRed && !activeData.isNoSignalSchool && !state.hasStoppedOnRed) { 
           if (isAdvancedMode && activeData.id === 21) {
             triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 16.5px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>스쿨존 가중 시간대 (승용차 기준)<br> 범칙금 12만원 / 벌점 30점 / 과태료 13만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
+            return; 
+          }
+          if (!isAdvancedMode && state.practiceIndex === 7) {
+            triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원<br><span style='color: #ef4444; font-size: 18px; font-weight: 900; display: block; margin-top: 6px;'> 차량이 연달아 진행하는 경우 <br> 차량별로 각각 일시정지 해야합니다.</span></div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
             return; 
           }
           triggerPenalty("🚨 신호·지시 위반", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제5조 신호위반<br>(승용차 기준)<br> 범칙금 6만원 / 벌점 15점 / 과태료 7만원</div>", ["차량 신호등이 적색 신호인 경우 보행자 유무와<br> 상관없이 정지선 앞에서 일시정지 해야합니다."]); 
@@ -2478,18 +2560,23 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
               "🟢 보행자가 인도로 완전히 올라간 후 안전 출발",
               "🏃 우회전 직후 두 번째 횡단보도에서도 준법 운행!"
             ];
+          }
+          else if (state.practiceIndex === 7) {
+            title = "🏆 준법 운전 성공 (상황 8) 🏆";
+            items = [
+              "🚘 연달아 진행시 <span style='color:#ef4444; font-weight:bold;'>차량별로 각각 일시정지</span> 성공",
+              "🏃 교차로에서 서행 운전"
+            ];
             
             if (!state.clearedSteps.includes(state.practiceIndex)) {
               state.clearedSteps.push(state.practiceIndex);
             }
             
-            const allStepsCleared = [0, 1, 2, 3, 4, 5, 6].every(stepIndex => state.clearedSteps.includes(stepIndex));
+            const allStepsCleared = [0, 1, 2, 3, 4, 5, 6, 7].every(stepIndex => state.clearedSteps.includes(stepIndex));
             
             if (allStepsCleared) {
               state.isAdvancedUnlocked = true;
               localStorage.setItem("isAdvancedUnlocked", "true");
-            } else {
-              console.log("🔒 보류: 1~6단계 중 아직 완료하지 않은 실습 단계가 남아있습니다.");
             }
             
             nextScenarioBtn.textContent = "기본교육 종료";
@@ -2619,7 +2706,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
     stepButtons.forEach((button) => { 
       button.addEventListener("click", () => {
         if (button.dataset.screen === "advanced") {
-          const allStepsCleared = [0, 1, 2, 3, 4, 5, 6].every(stepIndex => state.clearedSteps.includes(stepIndex));
+          const allStepsCleared = [0, 1, 2, 3, 4, 5, 6, 7].every(stepIndex => state.clearedSteps.includes(stepIndex));
           
           if (allStepsCleared) {
             state.isAdvancedUnlocked = true;
@@ -2695,7 +2782,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
       
       let hintTitle = "💡 우회전 공식 힌트 💡"; 
       let hintBody = `<div style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: left; line-height: 1.6;"><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-bottom: 8px;">🚨 전방 차량신호가</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• <span style="color: #ef4444;">빨간불</span>이면 <span style="color: #ef4444;">일시정지</span> 후 우회전</span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px; margin-bottom: 12px;">• <span style="color: #22c55e;">초록불</span>이면 <span style="color: #22c55e;">서행</span>하며 우회전</span><span style="font-size: 17px; font-weight: 900; color: #facc15; display: block; margin-top: 15px; margin-bottom: 8px;">🚨 횡단보도에 </span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #ef4444;">있으면</span> 반드시 <span style="color: #ef4444;">일시정지</span></span></span><span style="font-size: 15px; font-weight: 800; color: #fff; display: block; margin-left: 6px;">• 보행자가 <span style="color: #22c55e;">없으면</span> <span style="color: #22c55e;">서행</span>하며 통과</span></div>`;
-      let hintBottom = ["<div style=\"text-align: center;\">정지선 일시정지란, 바퀴가 완전히 정지해 <br> 차량 속도가 0km/h가 되는 것을 말합니다.</div>"];
+      let hintBottom = ["<div style=\"text-align: center;\">정지선 일시정지란, 바퀴가 완전히 정지해 <br> 차량 속도가 <span style=\"color: #ef4444; font-weight: bold;\">0km/h</span>가 되는 것을 말합니다.<br><br> 만약 여러대의 차량이 연달아 진행하는 경우에는<br><span style=\"color: #ef4444; font-weight: bold;\">차량별로 각각 일시정지</span> 해야합니다. </div>"];
 
       if (isAdvancedMode && currentAdvancedList[state.advancedIndex]) {
         const activeData = currentAdvancedList[state.advancedIndex];
