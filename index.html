@@ -12,6 +12,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- 아이폰 전체화면(상/하단 툴바 제거) 설정 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="우회전 참교육">
+  <!-- 안드로이드 전체화면 설정 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0b1220">
   <meta property="og:title" content="현직 교통경찰이 직접 만든 [교차로 우회전 참교육 앱] 입니다.">
   <meta property="og:description" content="횡단보도 사고(형사처벌)는 12대 중과실! 주변에 공유해 주세요">
   <meta property="og:image" content="https://turn-right-101.github.io/trafficedu/assets/police.png">
@@ -54,7 +61,9 @@
       position: relative;
     }
 
-    .hidden { display: none !important; }
+    .hidden { display: none !important; visibility: hidden !important; }
+#screen-drive .card.hidden,
+#screen-drive .drive-wrap.hidden { display: none !important; }
 
     .landing {
       position: absolute; 
@@ -296,19 +305,21 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr); 
       gap: 6px;
-      padding: 10px 12px;
+      padding: 6px 4px;
     }
 
     .tab-btn {
-      min-height: 48px;
-      border-radius: 12px;
+      height: 36px;
+      min-height: 36px;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.08);
       background: #18253b;
       color: var(--muted);
       font: inherit;
-      font-size: 14px; 
+      font-size: 13px; 
       font-weight: 900;
       cursor: pointer;
+      padding: 0 4px;
     }
 
     .tab-btn.active {
@@ -384,7 +395,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;                    
-      margin-top: 16px;
+      margin-top: 8px;
       width: 100%;                  
     }
 
@@ -409,6 +420,10 @@
     }
     .btn-dark { background: #263752; color: white; }
     .btn-green { background: #2eaf61; color: white; }
+    .row .btn {
+      min-height: 42px !important; 
+      font-size: 15px; 
+    }
 
     .quiz-head {
       text-align: center;
@@ -435,14 +450,10 @@
     }
 
     .quiz-image {
-      width: 100%;
-      height: 230px; 
-      border-radius: 14px;
-      margin: 12px 0;
-      border: 1px solid rgba(255,255,255,0.12);
-      display: block;
-      object-fit: fill; 
-      background: #0a1020;
+      height: auto;
+      max-height: 40dvh;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
     }
 
     .options {
@@ -452,15 +463,16 @@
 
     .option {
       width: 100%;
+      min-height: 42px !important; 
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.08);
       background: #18243a;
       color: white;
       font: inherit;
       font-size: 15px;
-      line-height: 1.42;
+      line-height: 1.35;
       font-weight: 900;
-      padding: 12px 11px;
+      padding: 8px 11px !important; 
       cursor: pointer;
       text-align: left;
       word-break: keep-all;
@@ -476,13 +488,13 @@
       border-color: rgba(239, 68, 68, 0.34);
     }
 
-    .feedback {
+  .feedback {
       display: none;
       margin-top: 10px;
       border-radius: 14px;
-      padding: 12px;
+      padding: 4px 12px;
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.35; 
       font-weight: 800;
       word-break: keep-all;
     }
@@ -524,9 +536,11 @@
     }
 
     .drive-head {
+      position: relative;
+      z-index: 100;
       background-color: rgba(0, 0, 0, 0.92);
       color: #f1c40f;
-      padding: 8px 8px;
+      padding: 4px 8px;
       font-size: 13px; 
       font-weight: 900;
       text-align: center;
@@ -534,19 +548,29 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
+      height: 36px;
+      box-sizing: border-box;
+      flex-wrap: nowrap !important;
     }
 
     .nav-btn {
       background-color: #f1c40f;
       color: #000;
       border: none;
-      padding: 5px 8px;
+      padding: 0 8px;
+      height: 28px !important;
+      min-height: 28px !important;
       font-size: 11px;
       font-weight: 900;
       border-radius: 6px;
       cursor: pointer;
-      min-width: 58px;
+      min-width: 52px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
 
     .drive-map {
@@ -867,20 +891,37 @@
 
     .drive-dashboard {
       background-color: #111;
-      padding: 9px 10px;
+      padding: 7px 10px;
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       align-items: center;
+      gap: 13px; /* 속도와 성공 문구 사이의 간격 (숫자로 조절 가능) */
       color: white;
       border-top: 3px solid #000;
       border-bottom: 1px solid #333;
+      overflow: hidden;
+      white-space: nowrap;
     }
-    .drive-dashboard .speed-box { font-size: 13px; font-weight: 900; color: #67e8f9; }
+    .drive-dashboard .speed-box {
+      flex: 0 0 auto;
+      font-size: clamp(11px, 3.2vw, 13px);
+      font-weight: 900;
+      color: #67e8f9;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
 
     #stop-timer { 
-      font-size: 15px; 
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: clamp(11px, 3.4vw, 14px); 
       font-weight: 900; 
       color: #facc15; 
+      line-height: 1.25;
+      text-align: left; /* 오른쪽 끝이 아닌 속도 바로 옆으로 정렬 */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-shadow: 0 0 10px #facc15; 
       animation: flash-blink 0.4s infinite alternate; 
     }
@@ -971,15 +1012,51 @@
       0% { filter: brightness(1.0); transform: scale(1.0); }
       100% { filter: brightness(1.4); transform: scale(1.15); }
     }
-    .pedal-image {
-      position: absolute;
-      inset: 0;
+    .pedal-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      gap: 14px;
+      padding: 0 10px;
       pointer-events: none;
-      -webkit-user-drag: none;
-      user-select: none;
+    }
+
+    .pedal-capsule {
+      width: 22px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    .pedal-labels {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    /* 페달 큰 글자 (브레이크 / 엑셀) 크기 설정 */
+    .pedal-title {
+      font-size: 19px !important; /* 원하는 크기로 숫자 변경 가능 */
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 페달 작은 글자 (길게 누르기) 크기 설정 */
+    .pedal-sub {
+      font-size: 13px !important; /* 원하는 크기로 숫자 변경 가능 */
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
 
     #countdown-overlay {
@@ -1009,13 +1086,13 @@
       letter-spacing: 0.05em;
     }
     .countdown-scenario-box {
-      font-size: 16px;
+      font-size: clamp(13px, 3.8vw, 16px);
       font-weight: 900;
-      margin: 10px 0 20px 0;
-      line-height: 1.5;
+      margin: 4px 0 8px 0 !important;
+      line-height: 1.35;
       word-break: keep-all;
       background: rgba(0, 0, 0, 0.45) !important; 
-      padding: 16px;
+      padding: 8px 12px !important;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.15);
       width: 95%;
@@ -1032,18 +1109,24 @@
       font-size: 15px;
       font-weight: 800;
     }
-    .countdown-start-btn {
+  .countdown-start-btn {
       background: linear-gradient(180deg, #22c55e, #16a34a);
       color: white;
-      border: 0;
-      font-size: 18px;
+      border: 2px solid #fde68a !important;
+      font-size: clamp(14px, 4vw, 17px);
       font-weight: 900;
-      padding: 12px 32px;
+      padding: 8px 16px !important;
+      min-height: 40px !important;
       border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.24);
       width: 80%;
+      animation: blink-gold-soft 0.7s infinite alternate !important;
+      box-shadow: 0 0 16px #f59e0b, inset 0 0 8px #ffffff;
       transition: background 0.2s;
+    }
+    @keyframes blink-gold-soft {
+      0% { filter: brightness(1.0); transform: scale(1.0); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
+      100% { filter: brightness(1.35); transform: scale(1.06); box-shadow: 0 0 24px #f59e0b, inset 0 0 10px #ffffff; }
     }
     .countdown-start-btn:active {
       transform: translateY(1px);
@@ -1148,20 +1231,23 @@
   </style>
 </head>
 <body>
-  <div class="phone">
+  <div class="phone landing-mode">
     <div class="copyright-overlay hidden" id="copyrightScreen">
       <div class="copyright-card">
-        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 14px 12px; margin-bottom: 16px; text-align: center; word-break: keep-all; line-height: 1.6; font-size: 13.5px; color: #f8fafc;">
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 14px 12px; margin-bottom: 14px; text-align: center; word-break: keep-all; line-height: 1.6; font-size: 13.5px; color: #f8fafc;">
           <strong style="color: #facc15; font-size: 15px; display: block; margin-bottom: 8px; text-align: center;">📢 앱 제작 취지</strong>
           교차로 보행자 사고는 12대 중과실 사고로 형사처벌 대상이 됩니다. 그럼에도 불구하고 <br><span style="color: #ef4444; font-weight: bold;"> 우회전 통행방법을 정확히 인지하고 있는<br> 운전자는 0.3%에 불과</span>하다는 과거 언론보도가 있을 정도로 운전자분들의 우회전 통행방법 이해도는 낮은편입니다.<br><br>
           이에, 글과 그림으로 많은 홍보를 하였지만 어려워 하시는 분들이 계셔서 앱을 만들게 되었습니다.<br> 도움이 되시길 바랍니다.
         </div>
+        <button type="button" class="copyright-btn" id="copyrightConfirmBtn" style="margin-bottom: 16px;">확인 (닫기)</button>
         <div class="copyright-title">Copyright 해남경찰서.</div>
         <div class="copyright-content">
           본 앱은 공공누리 제4유형(출처표시·상업용금지·변경금지)에 따라 이용할 수 있습니다. 
           <span class="copyright-highlight">상업적 이용 및 소스코드 변형 후 재배포를 엄격히 금지합니다.</span>
+          <span style="display: block; margin-top: 10px; font-size: 11px; line-height: 1.45; color: #94a3b8; word-break: keep-all;">
+            ※ 본 앱은 서비스 개선을 위해 안전한 구글 분석시스템을 활용하며, 비식별화 IP, 접속경로, 기기 브라우저 정보 등의 비개인정보 로그가 자동 수집될 수 있습니다.
+          </span>
         </div>
-        <button type="button" class="copyright-btn" id="copyrightConfirmBtn">확인 (닫기)</button>
       </div>
     </div>
 
@@ -1179,13 +1265,34 @@
 
     <section class="landing" id="landingScreen">
       <h1>우회전 참교육</h1>
-      <p class="landing-copy">운전자분들의 많은 문의와 실제 단속 사례를 바탕으로, 올바른 우회전 통행 방법을 쉽게 이해하실 수 있도록 핵심 상황 위주로 구성한 교육 프로그램입니다. <br> <br> 우회전 통행 규칙은 생각보다 매우 간단합니다.<br> 이 프로그램으로 규칙을 쉽게 이해하시기를 바랍니다. <br> <br> ※ 이 앱은 교육 및 참고용이므로, 실제 운전시에는 항상 현장 교통상황과 신호에 주의하며 운행하시기 바랍니다.</p>
+      <p class="landing-copy">운전자분들의 많은 문의와 실제 단속 사례를 바탕으로, 올바른 우회전 통행 방법을 쉽게 이해하실 수 있도록 핵심 상황 위주로 구성한 교육 프로그램입니다.. <br> <br> 우회전 통행 규칙은 생각보다 매우 간단합니다.<br> 이 프로그램으로 규칙을 쉽게 이해하시기를 바랍니다. <br> <br> ※ 이 앱은 교육 및 참고용이므로, 실제 운전시에는 항상 현장 교통상황과 신호에 주의하며 운행하시기 바랍니다.</p>
       
-      <div class="card" style="margin: 14px auto 2px auto; padding: 8px 16px; width: 100%; border-radius: 12px; text-align: center;">
+      <!-- 1. 오류신고 -->
+      <div class="card" style="margin: 10px auto 2px auto; padding: 8px 16px; width: 100%; border-radius: 12px; text-align: center;">
         <span style="font-size: 17px; font-weight: 900; color: #fde68a; letter-spacing: -0.02em; display: block; line-height: 1.2;">
           오류신고 개선요청 :<br>haenampol@police.go.kr
         </span>
       </div>
+
+      <!-- 2. 해남경찰서 (시작 버튼) -->
+      <div class="landing-brand" id="startAppBtnBrand" style="gap: 14px; margin-top: 4px; height: 100px !important; padding: 0px 20px !important; display: flex; align-items: center; justify-content: center;">
+        <div class="landing-logo-wrap" style="width: 56px; height: 56px; border-radius: 12px; padding: 2px; flex-shrink: 0;">
+          <img class="landing-logo" src="assets/police.png" alt="해남경찰서 로고" style="width: 100% !important; height: 100% !important;">
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+          <div class="landing-brand-text">
+            <strong style="font-size: 30px; letter-spacing: -0.02em;">해남경찰서 교통과</strong>
+          </div>
+          <span style="font-family: 'Malgun Gothic', '맑은 고딕', sans-serif !important; font-size: 16px !important; font-weight: bold !important; color: #fde68a !important; letter-spacing: -0.04em; white-space: nowrap;">(해남경찰서를 누르면 시작됩니다)</span>
+        </div>
+      </div>
+
+      <!-- 3. 무음모드 해제 안내 -->
+      <button type="button" style="pointer-events: none; width: 100%; margin: 2px 0 4px 0; padding: 10px 0; min-height: 47px; border: 0; border-radius: 14px; background: linear-gradient(180deg, #3b82f6, #2563eb) !important; color: white !important; font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(37, 99, 235, 0.22) !important; position: relative; z-index: 1;">
+        <span class="fit-line" style="font-size: 16px; font-weight: 800; color: #facc15; text-shadow: 0 0 4px rgba(250, 204, 21, 0.3);">⚠️ 무음모드를 해제하고 사용하세요.</span>
+      </button>
+
+      <!-- 4. 메뉴 3종 (영상 시청 / 퀴즈 / 실습하기) -->
       <div class="landing-menu-container">
         <div class="landing-menu-item active">
           <span class="landing-menu-icon">🎬</span>
@@ -1198,20 +1305,6 @@
         <div class="landing-menu-item">
           <span class="landing-menu-icon">🏋️</span>
           <span class="landing-menu-text">실습하기</span>
-        </div>
-      </div>
-<button type="button" style="pointer-events: none; width: 100%; margin: 2px 0 4px 0; padding: 10px 0; min-height: 47px; border: 0; border-radius: 14px; background: linear-gradient(180deg, #3b82f6, #2563eb) !important; color: white !important; font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(37, 99, 235, 0.22) !important; position: relative; z-index: 1;">
-  <span style="font-size: 16px; font-weight: 800; color: #facc15; text-shadow: 0 0 4px rgba(250, 204, 21, 0.3);">⚠️ 무음모드를 해제하고 사용하세요.</span>
-</button>
-      <div class="landing-brand" id="startAppBtnBrand" style="gap: 14px; margin-top: 5px; height: 100px !important; padding: 0px 20px !important; display: flex; align-items: center; justify-content: center;">
-        <div class="landing-logo-wrap" style="width: 52px; height: 52px; border-radius: 12px; padding: 4px; flex-shrink: 0;">
-          <img class="landing-logo" src="assets/police.png" alt="해남경찰서 로고">
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
-          <div class="landing-brand-text">
-            <strong style="font-size: 30px; letter-spacing: -0.02em;">해남경찰서 교통과</strong>
-          </div>
-          <span style="font-family: 'Malgun Gothic', '맑은 고딕', sans-serif !important; font-size: 16px !important; font-weight: bold !important; color: #fde68a !important; letter-spacing: -0.04em; white-space: nowrap;">(해남경찰서를 누르면 시작됩니다)</span>
         </div>
       </div>
       <div class="landing-bottom">영상 시청 · 퀴즈 · 실습 순서로 진행됩니다.</div>
@@ -1245,7 +1338,7 @@
         </div>
       </div>
 
-      <div class="topbar" style="font-size: 14px;">교차로 우회전 참교육 앱 &lt;Copyright 해남경찰서&gt;</div> 
+      <div class="topbar" style="font-size: 14px;">우회전 교육 앱 &lt;Copyright 해남경찰서&gt;</div> 
 
       <div class="tabs">
         <button class="tab-btn active" data-screen="video">1. 영상 시청</button>
@@ -1313,34 +1406,34 @@
           <h2 style="color: var(--yellow); text-align: center; margin-bottom: 15px; font-weight: 900; font-size: 20px; word-break: keep-all; letter-spacing: -0.03em;"> 신호등이 있는 일반 교차로,<br> 이것만 기억하세요</h2>
           <div class="edu-table-container">
             <div class="edu-table-row">
-              <div class="edu-table-left">차량<br>신호가</div>
+              <div class="edu-table-left"><span class="fit-line">차량 신호가</span></div>
               <div class="edu-table-right-box">
-                <div class="edu-table-right-cell">🔴&nbsp;<span style="color: #ef4444; font-weight: 900;">빨간불</span>이면&nbsp;<span style="color: #ef4444; font-weight: 900;">일시정지</span>&nbsp;후 우회전</div>
-                <div class="edu-table-right-cell">🟢&nbsp;<span style="color: #22c55e; font-weight: 900;">초록불</span>이면&nbsp;<span style="color: #22c55e; font-weight: 900;">서행</span>하며 우회전</div>
+                <div class="edu-table-right-cell">🔴&nbsp;&nbsp;<span style="color: #ef4444; font-weight: 900;">빨간불</span>이면&nbsp;&nbsp;<span style="color: #ef4444; font-weight: 900;">일시정지</span>&nbsp;&nbsp;후 우회전</div>
+                <div class="edu-table-right-cell">🟢&nbsp;&nbsp;<span style="color: #22c55e; font-weight: 900;">초록불</span>이면&nbsp;&nbsp;<span style="color: #22c55e; font-weight: 900;">서행</span>하며&nbsp;&nbsp;우회전</div>
               </div>
             </div>
             <div class="edu-table-row">
-              <div class="edu-table-left">횡단보도에</div>
+              <div class="edu-table-left"><span class="fit-line">횡단보도에</span></div>
               <div class="edu-table-right-box">
                 <div class="edu-table-right-cell" style="display: block;">🚶 보행자가 <span style="color: #ef4444; font-weight: 900;">있으면</span> 반드시 <span style="color: #ef4444; font-weight: 900;">일시정지</span></div>
-                <div class="edu-table-right-cell">❌ 보행자가&nbsp;<span style="color: #22c55e; font-weight: 900;">없으면 서행</span>하며 통과</div>
+                <div class="edu-table-right-cell">❌ 보행자가 <span style="color: #22c55e; font-weight: 900;">없으면 서행</span>하며 통과</div>
               </div>
             </div>
           </div>
           <button class="btn" id="btn-gate-confirm" style="width: 100%; min-height: 52px; background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%) !important; color: #ffffff !important; border: 1px solid #60a5fa !important; border-radius: 14px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important; font-size: 18px; font-weight: 900; letter-spacing: -0.02em; cursor: pointer;">
-            알겠습니다 <span style="font-size: 18px; font-weight: 800; color: #fde68a !important; margin-left: 4px;">(누르면 실습 시작)</span>
+            <span class="fit-line">알겠습니다 <span style="font-weight: 800; color: #fde68a !important; margin-left: 4px;">(누르면 실습 시작)</span></span>
           </button>
-          <p style="font-size: 18px; font-weight: 800; color: #facc15; text-align: center; margin: 14px 0 0 0; text-shadow: 0 0 12px #facc15, 0 0 4px rgba(250, 204, 21, 0.6); animation: flash-blink 0.5s infinite alternate;">⚠️ 무음모드를 해제하고 사용하세요.</p>
+          <p style="font-size: 18px; font-weight: 800; color: #facc15; text-align: center; margin: 14px 0 0 0; text-shadow: 0 0 12px #facc15, 0 0 4px rgba(250, 204, 21, 0.6); animation: flash-blink 0.5s infinite alternate;"><span class="fit-line">⚠️ 무음모드를 해제하고 사용하세요.</span></p>
         </div>
 
         <div class="drive-wrap hidden" id="actual-drive-area">
           <div id="countdown-overlay" class="hidden">
             <div class="countdown-title" id="countdown-sub-title">실습 상황 안내</div>
-            <div class="countdown-scenario-box" style="margin-top: 170px !important;">
+            <div class="countdown-scenario-box">
               <span class="countdown-box-title" id="countdown-box-title">상황 ① </span>
               <span class="countdown-box-detail" id="countdown-box-detail">텍스트</span>
             </div>
-            <button class="countdown-start-btn" id="countdownStartBtn" type="button">실습 시작하기<br>여기를 누르면 시작됩니다</button>
+            <button class="countdown-start-btn" id="countdownStartBtn" type="button"><span class="fit-line">여기를 눌러 시작하기</span><br><span class="fit-line">확대 모드시 위아래로 움직여 사용하세요</span></button>
             <div class="countdown-number hidden" id="countdown-num" style="font-size: 65px;">3</div>
           </div>
 
@@ -1472,55 +1565,67 @@
             <div id="stop-timer" class="hidden">정지선 일시정지 성공, 우회전(서행)</div>
           </div>
 
-          <div class="tutorial" id="tutorialText">엑셀 버튼을 눌러 진행하세요. 빨간 신호면 정지선 앞에서 먼저 멈춰야 합니다.</div>
-
-          <div class="pedals">
+          <div class="pedals" style="padding-top: 8px;">
             <button class="pedal brake" id="brakeBtn" type="button" aria-label="브레이크">
-              <img class="pedal-image" src="assets/pedal-brake.svg" alt="">
+              <div class="pedal-inner">
+                <span class="pedal-capsule"></span>
+                <div class="pedal-labels">
+                  <span class="pedal-title">브레이크</span>
+                  <span class="pedal-sub">길게 누르기</span>
+                </div>
+              </div>
             </button>
             <button class="pedal accel" id="accelBtn" type="button" aria-label="엑셀">
-              <img class="pedal-image" src="assets/pedal-accel.svg" alt="">
+              <div class="pedal-inner">
+                <span class="pedal-capsule"></span>
+                <div class="pedal-labels">
+                  <span class="pedal-title">엑셀</span>
+                  <span class="pedal-sub">길게 누르기</span>
+                </div>
+              </div>
             </button>
           </div>
+
+          <div class="tutorial" id="tutorialText" style="margin-top: 4px; margin-bottom: 10px;">엑셀 버튼을 눌러 진행하세요. 빨간 신호면 정지선 앞에서 먼저 멈춰야 합니다.</div>
         </div>
       </section>
 
       <section class="screen" id="advancedGatewayScreen">
-        <div class="landing" style="position: relative; background: radial-gradient(circle at center, #0f1c30 0%, #030712 100%); z-index: 10; padding: 12px 18px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+        <div class="landing" style="position: relative; background: radial-gradient(circle at center, #0f1c30 0%, #030712 100%); z-index: 10; padding: 10px 18px; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; box-sizing: border-box;">
           
-          <div style="margin-bottom: 8px; text-align: center;">
-            <h2 style="font-size: 24px; font-weight: 900; color: #facc15; margin: 0 0 4px 0;">🚔 우회전 참교육 심화편</h2>
-            <p style="font-size: 14px; color: #bfd0e0; margin: 0; line-height: 1.4; word-break: keep-all;">
-              운전자분들이 많이 문의하시는<br> 우회전 구간입니다.<br><br>
-              <span style="color: #facc15; font-weight: 900; animation: flash-blink 1.2s infinite alternate; display: inline-block; margin-top: 4px;">궁금하신 구간을 선택하세요!<br></span>
+          <div style="margin-bottom: 0px; text-align: center;">
+            <h2 style="font-size: 22px; font-weight: 900; color: #facc15; margin: 0 0 2px 0;">🚔 우회전 참교육 심화편</h2>
+            <p style="font-size: 13px; color: #bfd0e0; margin: 0; line-height: 1.3; word-break: keep-all;">
+              운전자분들이 많이 문의하시는 우회전 구간입니다.<br>
+              <span style="color: #facc15; font-weight: 900; animation: flash-blink 1.2s infinite alternate; display: inline-block; margin-top: 2px;">궁금하신 구간을 선택하세요!</span>
             </p>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-bottom: 12px;">
-            <button class="btn" onclick="startAdvancedCourse(1)" style="min-height: 46px; background: linear-gradient(180deg, #2d3748, #1a202c) !important; border: 2px solid #facc15 !important; color: #fef08a !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
+          <div style="display: flex; flex-direction: column; gap: 6px; width: 100%; margin-bottom: 0px;">
+            <button class="btn" onclick="startAdvancedCourse(1)" style="min-height: 40px !important; background: linear-gradient(180deg, #2d3748, #1a202c) !important; border: 2px solid #facc15 !important; color: #fef08a !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
               <span style="font-weight: 900 !important; color: #fef08a !important;">1. 우회전 전용 신호등 / 우회전</span> <span style="font-weight: 900 !important; color: #fef08a !important;">▶</span>
             </button>
             
-            <button class="btn" onclick="startAdvancedCourse(2)" style="min-height: 46px; background: linear-gradient(180deg, #b91c1c, #7f1d1d) !important; border: 2px solid #fca5a5 !important; color: #ffe4e6 !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
+            <button class="btn" onclick="startAdvancedCourse(2)" style="min-height: 40px !important; background: linear-gradient(180deg, #b91c1c, #7f1d1d) !important; border: 2px solid #fca5a5 !important; color: #ffe4e6 !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
               <span style="font-weight: 900 !important; color: #ffe4e6 !important;">2. 어린이 보호구역 / 우회전</span> <span style="font-weight: 900 !important; color: #ffe4e6 !important;">▶</span>
             </button>
 
-            <button class="btn" onclick="startAdvancedCourse(5)" style="min-height: 46px; background: linear-gradient(180deg, #4c1d95, #2e1065) !important; border: 2px solid #ddd6fe !important; color: #f5f3ff !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
+            <button class="btn" onclick="startAdvancedCourse(5)" style="min-height: 40px !important; background: linear-gradient(180deg, #4c1d95, #2e1065) !important; border: 2px solid #ddd6fe !important; color: #f5f3ff !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
               <span style="font-weight: 900 !important; color: #f5f3ff !important;">3. 대각선 횡단보도 / 우회전</span> <span style="font-weight: 900 !important; color: #f5f3ff !important;">▶</span>
             </button>
             
-            <button class="btn" onclick="startAdvancedCourse(3)" style="min-height: 46px; background: linear-gradient(180deg, #0369a1, #0c4a6e) !important; border: 2px solid #7dd3fc !important; color: #e0f2fe !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
+            <button class="btn" onclick="startAdvancedCourse(3)" style="min-height: 40px !important; background: linear-gradient(180deg, #0369a1, #0c4a6e) !important; border: 2px solid #7dd3fc !important; color: #e0f2fe !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
               <span style="font-weight: 900 !important; color: #e0f2fe !important;">4. 신호등 없는 일반 교차로 / 우회전</span> <span style="font-weight: 900 !important; color: #e0f2fe !important;">▶</span>
             </button>
 
-            <button class="btn" onclick="startAdvancedCourse(4)" style="min-height: 46px; background: linear-gradient(180deg, #16a34a, #14532d) !important; border: 2px solid #bbf7d0 !important; color: #dcfce7 !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
+            <button class="btn" onclick="startAdvancedCourse(4)" style="min-height: 40px !important; background: linear-gradient(180deg, #16a34a, #14532d) !important; border: 2px solid #bbf7d0 !important; color: #dcfce7 !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; border-radius: 12px; text-align: left; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;">
               <span style="font-weight: 900 !important; color: #dcfce7 !important;">5. 좌회전 신호일 때 / 우회전</span> <span style="font-weight: 900 !important; color: #dcfce7 !important;">▶</span>
             </button>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; margin-top: 6px;">
-            <button class="btn" id="advancedRestartBtn" onclick="document.getElementById('finalRestartBtn').click();" style="min-height: 46px; font-size: 15px; font-weight: 900; background: linear-gradient(180deg, #16a34a 0%, #15803d 100%) !important; color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 14px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3) !important; cursor: pointer;">🔄 처음 화면으로 돌아가기</button>
-            <button class="btn" id="advancedCloseBtn" onclick="document.getElementById('finalCloseBtn').click();" style="min-height: 46px; font-size: 15px; font-weight: 900; background: linear-gradient(180deg, #334155 0%, #1e293b 100%) !important; color: #94a3b8 !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 14px; cursor: pointer;">❌ 완전히 종료하기</button>
+          <div style="display: grid; grid-template-columns: 1fr; gap: 6px; width: 100%; margin-top: 4px;">
+            <button class="btn" id="advancedRestartBtn" onclick="document.getElementById('finalRestartBtn').click();" style="min-height: 42px !important; font-size: 14px; font-weight: 900; background: linear-gradient(180deg, #16a34a 0%, #15803d 100%) !important; color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 14px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3) !important; cursor: pointer;">🔄 처음 화면으로 돌아가기</button>
+            <button class="btn" id="advancedCloseBtn" onclick="document.getElementById('finalCloseBtn').click();" style="min-height: 42px !important; font-size: 14px; font-weight: 900; background: linear-gradient(180deg, #334155 0%, #1e293b 100%) !important; color: #94a3b8 !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 14px; cursor: pointer;">❌ 완전히 종료하기</button>
           </div>
           
         </div>
@@ -1528,6 +1633,621 @@
 
     </div>
   </div>
+
+  <style id="accessibility-layout-overrides">
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    *, *::before, *::after {
+      min-width: 0;
+    }
+
+    .phone {
+      width: min(100%, 430px);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+
+    .phone.landing-mode {
+      height: 100dvh;
+      min-height: 0;
+      max-height: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #appShell {
+      min-height: 100dvh;
+    }
+
+    .landing,
+    #advancedGatewayScreen .landing {
+      position: relative !important;
+      inset: auto !important;
+      min-height: 100dvh;
+      height: auto !important;
+      justify-content: flex-start !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      gap: clamp(10px, 2.5dvh, 18px);
+      padding: clamp(16px, 5vw, 28px) clamp(14px, 5vw, 22px) calc(24px + env(safe-area-inset-bottom)) !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .landing h1,
+    .title h1,
+    .card h2,
+    .card h3,
+    .quiz-question,
+    .landing-brand-text strong,
+    .copyright-title {
+      letter-spacing: 0 !important;
+      overflow-wrap: anywhere;
+    }
+
+    .landing h1 {
+      font-size: clamp(1.75rem, 8vw, 2.125rem);
+      line-height: 1.22;
+    }
+
+    .landing-copy {
+      margin-top: 0;
+      font-size: 1rem;
+      line-height: 1.72;
+      overflow-wrap: anywhere;
+    }
+
+    #landingScreen {
+      height: auto !important;
+      min-height: 100dvh !important;
+      max-height: none !important;
+      justify-content: center !important;
+      gap: clamp(6px, 1.2dvh, 10px) !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+      padding: clamp(12px, 2.5dvh, 20px) clamp(12px, 4vw, 18px) calc(20px + env(safe-area-inset-bottom)) !important;
+    }
+
+    #landingScreen h1 {
+      font-size: clamp(1.65rem, 7vw, 2.05rem) !important;
+      line-height: 1.12;
+    }
+
+    #landingScreen .landing-copy {
+      font-size: clamp(0.7rem, 3.15vw, 0.94rem) !important;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    #landingScreen .card {
+      margin: 0 auto !important;
+      padding: 6px 10px !important;
+    }
+
+    #landingScreen .card span {
+      font-size: clamp(0.75rem, 3.3vw, 0.95rem) !important;
+      line-height: 1.18 !important;
+    }
+
+    #landingScreen .landing-menu-container {
+      margin: 0 !important;
+      gap: 8px;
+    }
+
+    #landingScreen .landing-menu-item {
+      min-height: 58px;
+      padding: 6px 4px !important;
+      gap: 3px;
+      border-radius: 14px;
+    }
+
+    #landingScreen .landing-menu-icon {
+      font-size: clamp(1.25rem, 5.8vw, 1.7rem);
+    }
+
+    #landingScreen .landing-menu-text {
+      font-size: clamp(0.72rem, 3.4vw, 0.9rem);
+      line-height: 1.15;
+    }
+
+    #landingScreen > button {
+      min-height: 40px !important;
+      margin: 0 !important;
+      padding: 7px 0 !important;
+    }
+
+    #landingScreen > button span {
+      font-size: clamp(0.75rem, 3.4vw, 0.95rem) !important;
+    }
+
+    #landingScreen #startAppBtnBrand {
+      min-height: 82px !important;
+      padding: 8px 14px !important;
+      margin: 0 !important;
+      gap: 10px !important;
+    }
+
+    #landingScreen #startAppBtnBrand .landing-logo-wrap {
+      width: clamp(48px, 14vw, 60px) !important;
+      height: clamp(48px, 14vw, 60px) !important;
+    }
+
+    .landing-brand,
+    .advanced-brand-btn {
+      flex-wrap: wrap;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 72px;
+      margin-top: 0 !important;
+      padding: 12px 14px !important;
+      row-gap: 8px;
+    }
+
+    .landing-brand-text strong,
+    .landing-brand span,
+    #myRightTurnSignCustom,
+    #scenario8-success-msg {
+      white-space: normal !important;
+      overflow-wrap: anywhere;
+    }
+
+    .landing-logo-wrap {
+      width: clamp(52px, 16vw, 84px) !important;
+      height: clamp(52px, 16vw, 84px) !important;
+      flex: 0 0 auto;
+    }
+
+    .row,
+    .quiz-nav,
+    .modal-actions,
+    .pedals {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .landing-menu-container {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .tabs {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #startAppBtnBrand {
+      flex-wrap: nowrap !important;
+      min-height: 100px;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #startAppBtnBrand > div:last-child {
+      flex: 1 1 auto;
+      min-width: 0;
+      align-items: center !important;
+      text-align: center;
+    }
+
+    #startAppBtnBrand .landing-brand-text strong {
+      font-size: clamp(1.45rem, 7vw, 1.875rem) !important;
+      line-height: 1.12;
+      text-align: center;
+      white-space: nowrap !important;
+      overflow-wrap: normal !important;
+    }
+
+    #startAppBtnBrand span {
+      display: block;
+      max-width: 100%;
+      text-align: center;
+      font-size: clamp(0.86rem, 3.8vw, 1rem) !important;
+      line-height: 1.25;
+      white-space: nowrap !important;
+      overflow-wrap: normal !important;
+    }
+
+    .tab-btn,
+    .btn,
+    .landing button,
+    .nav-btn,
+    .option,
+    .copyright-btn,
+    .countdown-start-btn,
+    #advancedGatewayScreen button.btn {
+      height: auto !important;
+      min-height: 48px;
+      white-space: normal !important;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    .tab-btn,
+    .nav-btn {
+      min-height: 45px !important; /* 버튼 높이 (기본값 약 48px -> 원하는 높이로 숫자 변경) */
+      padding: 6px 6px; /* 버튼 글자 위아래 여백 (숫자가 작을수록 얇아짐) */
+    }
+
+    #startAppBtnBrand .landing-brand-text,
+    #startAppBtnBrand > div:last-child {
+      max-width: 100%;
+    }
+
+    #startAppBtnBrand .landing-brand-text strong,
+    #startAppBtnBrand > div:last-child > span,
+    .landing-menu-text,
+    .tab-btn,
+    .nav-btn,
+    #quizStep,
+    #practiceScenarioText,
+    .drive-dashboard .speed-box,
+    #stop-timer,
+    #police-banner,
+    #myRightTurnSignCustom,
+    #scenario8-success-msg,
+    .countdown-title,
+    .countdown-box-title,
+    .landing > button span,
+    #btn-gate-confirm {
+      white-space: nowrap !important;
+      overflow-wrap: normal !important;
+      word-break: keep-all;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .fit-line {
+      display: inline-block;
+      max-width: 100%;
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: clip;
+      vertical-align: middle;
+    }
+
+    #btn-gate-confirm,
+    .landing > button {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.25em;
+    }
+
+    .countdown-start-btn {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 3px;
+    }
+
+    .landing > button span,
+    #btn-gate-confirm .fit-line,
+    #btn-gate-confirm .fit-line span,
+    .countdown-start-btn .fit-line {
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+
+    .countdown-start-btn br {
+      display: none;
+    }
+
+    .countdown-box-detail,
+    .countdown-box-detail > *,
+    .edu-table-left,
+    .edu-table-right-cell {
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .countdown-box-detail > * {
+      margin-inline: auto;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    .modal-card,
+    .modal-card *,
+    .result-list,
+    .result-list li,
+    .result-list li * {
+      max-width: 100%;
+    }
+
+    .modal-card p,
+    .result-list li,
+    .result-list li *,
+    #resultMessage,
+    #resultMessage * {
+      white-space: normal !important;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      line-height: 1.48 !important;
+    }
+
+    #resultMessage > div,
+    .result-list li > div,
+    .result-list li span {
+      font-size: clamp(0.78rem, 3.55vw, 1rem) !important;
+    }
+
+    .result-list li {
+      padding: clamp(9px, 3.4vw, 12px);
+    }
+
+    .penalty-summary {
+      background: #f59e0b;
+      color: #111827;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: 900;
+      text-align: center;
+      font-size: clamp(0.78rem, 3.55vw, 0.98rem) !important;
+      line-height: 1.45 !important;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    .modal-readable {
+      display: block;
+      width: 100%;
+      font-size: clamp(0.78rem, 3.55vw, 0.98rem) !important;
+      line-height: 1.5 !important;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    .pedal {
+      min-height: clamp(72px, 22vw, 90px);
+    }
+
+    #actual-drive-area.drive-wrap {
+      display: flex;
+      flex-direction: column;
+      max-height: none;
+      overflow: visible;
+    }
+
+    #actual-drive-area .drive-head,
+    #actual-drive-area .drive-dashboard,
+    #actual-drive-area .tutorial,
+    #actual-drive-area .pedals {
+      flex: 0 0 auto;
+    }
+
+    #actual-drive-area .drive-head {
+      padding-block: 6px;
+    }
+
+    #actual-drive-area .drive-map {
+      flex: 0 0 350px;
+      height: 350px !important;
+      min-height: 350px !important;
+    }
+
+    #actual-drive-area .drive-dashboard {
+      gap: 4px;
+      padding: 6px 8px;
+    }
+
+    #actual-drive-area .drive-dashboard .speed-box,
+    #actual-drive-area #stop-timer {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    #actual-drive-area #stop-timer {
+      justify-self: start;
+      text-align: left;
+    }
+
+    #actual-drive-area .tutorial {
+      margin: 6px 8px;
+      padding: 7px 8px;
+      font-size: clamp(0.72rem, 3.1vw, 0.82rem);
+      line-height: 1.35;
+    }
+
+    #actual-drive-area .pedals {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px;
+      padding: 0 8px 8px;
+    }
+
+    #actual-drive-area .pedal {
+      min-height: clamp(52px, 18vw, 78px);
+    }
+
+    #actual-drive-area .pedal::before,
+    #actual-drive-area .pedal::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    .pedal-image {
+      object-fit: contain;
+    }
+
+    #advancedGatewayScreen button.btn {
+      align-items: flex-start !important;
+      gap: 8px;
+      min-height: 56px !important;
+      padding: 12px !important;
+      font-size: clamp(0.95rem, 4.2vw, 1.05rem) !important;
+    }
+
+    #advancedGatewayScreen button.btn span:first-child {
+      flex: 1 1 auto;
+      overflow-wrap: anywhere;
+    }
+
+    .screen {
+      padding-inline: clamp(10px, 4vw, 12px);
+      padding-bottom: calc(18px + env(safe-area-inset-bottom));
+    }
+
+    .card,
+    .watch-item,
+    .option,
+    .feedback,
+    .result-list li,
+    .tutorial,
+    .copyright-content,
+    .countdown-scenario-box {
+      overflow-wrap: anywhere;
+    }
+
+    .watch-item {
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .watch-item span {
+      font-size: inherit !important;
+    }
+
+    #screen-quiz .card,
+    .edu-table-row {
+      overflow: visible !important;
+    }
+
+    .quiz-image {
+      width: 100%;
+      height: 230px;
+      max-height: none;
+      aspect-ratio: auto;
+      object-fit: fill;
+    }
+
+    .drive-head {
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+    }
+
+    #quizStep,
+    #practiceScenarioText {
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.2;
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+
+    .drive-map {
+      height: clamp(280px, 82vw, 350px);
+    }
+
+    #countdown-overlay {
+      inset: 0 !important;
+      top: 0 !important;
+      height: 100% !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      padding: 8px 12px !important;
+      background: rgba(11, 18, 32, 0.0) !important;
+    }
+
+    #countdown-overlay .countdown-scenario-box {
+      margin: 12px 0 !important;
+      width: 100%;
+    }
+
+    .modal,
+    .copyright-overlay,
+    #eduEndScreen {
+      position: fixed !important;
+      inset: 0 !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: calc(20px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom)) !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 팝업 안내창을 화면 중앙에서 살짝 위쪽으로 자연스럽게 배치 */
+    .modal-card {
+      transform: translateY(-8%) !important;
+    }
+
+    .modal-card,
+    .copyright-card {
+      width: min(100%, 430px);
+      max-height: none;
+      margin: 0;
+    }
+
+    #eduEndScreen {
+      min-height: 100dvh;
+      justify-content: flex-start !important;
+    }
+
+    #eduEndScreen > * {
+      max-width: min(100%, 430px);
+    }
+
+    .edu-table-row {
+      grid-template-columns: minmax(72px, 28%) minmax(0, 1fr) !important;
+    }
+
+    .edu-table-left,
+    .edu-table-right-cell {
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 360px) {
+      .row,
+      .quiz-nav,
+      .modal-actions,
+      .edu-table-row {
+        grid-template-columns: 1fr !important;
+      }
+
+      #actual-drive-area .drive-dashboard {
+        display: flex !important;
+        justify-content: flex-start !important;
+        gap: 6px !important;
+      }
+
+      #actual-drive-area .drive-dashboard .speed-box,
+      #actual-drive-area #stop-timer {
+        justify-self: start !important;
+        text-align: left !important;
+      }
+
+      .edu-table-left {
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .landing h1 {
+        font-size: 1.65rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -1555,32 +2275,6 @@
       advanced: document.getElementById("advancedGatewayScreen") 
     };
 
-    function setScreen(name) {
-      if (state.currentScreen === "video" && name !== "video") pauseVideo();
-      if (state.currentScreen === "drive" && name !== "drive") clearInterval(state.gameInterval);
-      
-      state.currentScreen = name;
-      
-      screens.forEach((screen) => { 
-        if (screenEls[screen]) {
-          screenEls[screen].classList.toggle("active", screen === name); 
-          screenEls[screen].classList.toggle("hidden", screen !== name); 
-        }
-      });
-      
-      if (document.getElementById("eduEndScreen")) {
-        document.getElementById("eduEndScreen").classList.add("hidden");
-      }
-      
-      stepButtons.forEach((button) => { button.classList.toggle("active", button.dataset.screen === name); });
-      if (name === "drive") {
-        isAdvancedMode = false; 
-        document.getElementById("drive-edu-gate").classList.remove("hidden");
-        document.getElementById("actual-drive-area").classList.add("hidden");
-        clearInterval(state.gameInterval);
-      }
-    }
-
     const quizData = [
       { image: "assets/q1.jpg", question: "차량신호등이 빨간색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. 정지선에서 일시정지 후 통과한다.", "2. 일시정지 없이 통과한다."], answer: 0, explain: "차량신호가 빨간불이면 무조건 일시정지 해야합니다." },
       { image: "assets/q3.jpg", question: "차량신호등이 초록색 입니다.<br>횡단보도 정지선에서 어떻게 해야 할까요?", options: ["1. (보행자 유무를 살피면서) 서행으로 통과한다.", "2. 정지선에서 일지정지 후 통과한다."], answer: 0, explain: "차량신호가 초록불인경우 일시정지 의무는 없습니다." },
@@ -1590,12 +2284,12 @@
     ];
 
     const practiceScenarios = [
-      { id: 0, text: "차량과 보행 신호등 모두 적색 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: false, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 1, text: "차량신호 적색 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 2, text: "차량신호 적색 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 3, text: "차량신호 초록 / 보행신호 적색 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: false, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 4, text: "차량신호 초록 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
-      { id: 5, text: "차량신호 초록 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불&nbsp;&nbsp;/ 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 0, text: "차량과 보행 신호등 모두 적색 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불 / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: false, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 1, text: "차량신호 적색 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불 / 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 2, text: "차량신호 적색 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 빨간불 / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 3, text: "차량신호 초록 / 보행신호 적색 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불 / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: false, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 4, text: "차량신호 초록 / 보행신호 초록 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불 / 보행자 : 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 5, text: "차량신호 초록 / 보행신호 초록 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>차량 신호 : 초록불 / 보행자 : 없음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: false, pedGreen: true, hasPed: false, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 6, text: "횡단보도 연속 초록불 / 사람있음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 2개 횡단보도에 연속으로 보행자 있음<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 7, text: "앞차와 연달아 우회전 / 사람없음", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'> 빨간불에 앞차와 연달아 우회전<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: false, hasLeadCar: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" }
     ];
@@ -1604,7 +2298,7 @@
       { id: 11, course: 1, text: "심화1-1 우회전 신호등 [빨간불]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>우회전 전용 신호등 : <span style='color:#ef4444;'>적색 신호</span><br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isRtArrow: false, rtRed: true, hasPed: false, mainRed: true, pedGreen: false },
       { id: 10, course: 1, text: "심화1-2 우회전 신호등 [우회전 ▶]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>우회전 전용 신호등 : <span style='color:#22c55e;'>녹색 우회전(▶)</span><br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isRtArrow: true, rtRed: false, hasPed: false, mainRed: false, pedGreen: false },
       { id: 20, course: 2, text: "심화2-1 신호등 없는 스쿨존 [사람없음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'><span style='color:#ef4444;'>어린이보호구역(스쿨존)</span> 신호등 없음<br>보행자 : 없음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, isNoSignalSchool: true, hasPed: false, mainRed: false, pedGreen: false },
-      { id: 21, course: 2, text: "심화2-2 신호등 있는 스쿨존 [사람있음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>차량 신호 : 빨간불&nbsp;&nbsp;/ 보행자 : 있음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
+      { id: 21, course: 2, text: "심화2-2 신호등 있는 스쿨존 [사람있음]", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>차량 신호 : 빨간불 / 보행자 : 있음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isSchool: true, mainRed: true, pedGreen: true, hasPed: true, tutorial: "<div style='text-align: center; width: 100%; font-size: 16px; font-weight: bold;'>헷갈리면 '💡힌트💡' 클릭</div>" },
       { id: 30, course: 3, text: "심화4-1 신호등 없는 일반교차로 /사람있음", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>신호등 없는 교차로<br>보행자 : 있음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isNoSignal: true, hasPed: true, mainRed: false, pedGreen: false },
       { id: 31, course: 3, text: "심화4-2 신호등 없는 일반교차로 /사람없음", popupText: "<div style='text-align:center; font-size:17px; font-weight:900; line-height:1.8; color:#fff;'>신호등 없는 교차로<br>보행자 : 없음<br><span style='color:#facc15;'>어떻게 운전하시겠습니까❓</span></div>", isNoSignal: true, hasPed: false, mainRed: false, pedGreen: false },
       { id: 50, course: 5, text: "심화3 대각선 횡단보도 [사람있음]", popupText: "<div style='text-align: center; font-size: 17px; font-weight: 900; line-height: 1.8; color: #ffffff;'>대각선 횡단보도 / 전체 초록불 <br>보행자 : 통행 중<br><span style='color: #facc15;'>어떻게 운전하시겠습니까❓</span></div>", mainRed: true, pedGreen: true, hasPed: true, isDiagonalMode: true },
@@ -1691,6 +2385,224 @@
     };
     
     function pauseVideo() { trainingVideo.pause(); }
+
+    const singleLineFitSelectors = [
+      "#startAppBtnBrand .landing-brand-text strong",
+      "#startAppBtnBrand > div:last-child > span",
+      ".landing-menu-text",
+      ".watch-item",
+      ".tab-btn",
+      ".nav-btn",
+      "#quizStep",
+      "#practiceScenarioText",
+      ".drive-dashboard .speed-box",
+      "#stop-timer",
+      "#police-banner",
+      "#myRightTurnSignCustom",
+      "#scenario8-success-msg",
+      ".countdown-title",
+      ".countdown-box-title",
+      ".countdown-box-detail > div",
+      ".countdown-box-detail > div > span",
+      ".landing > button span",
+      "#btn-gate-confirm",
+      "#btn-gate-confirm .fit-line",
+      "#btn-gate-confirm .fit-line span",
+      ".fit-line",
+      ".fit-line span",
+      ".edu-table-left .fit-line",
+      ".edu-table-right-cell",
+      "#advancedGatewayScreen button.btn > span:first-child",
+      "#advancedGatewayScreen button.btn > span:last-child",
+      "#advancedRestartBtn",
+      "#advancedCloseBtn",
+      "#finalRestartBtn",
+      "#finalCloseBtn"
+    ];
+
+    let fitTextRaf = null;
+
+    function fitSingleLineText() {
+      const targets = document.querySelectorAll(singleLineFitSelectors.join(","));
+
+      targets.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return;
+
+        if (!element.hasAttribute("data-fit-original-font-size")) {
+          element.dataset.fitOriginalFontSize = element.style.fontSize || "";
+        }
+
+        if (element.dataset.fitOriginalFontSize) {
+          element.style.setProperty("font-size", element.dataset.fitOriginalFontSize);
+        } else {
+          element.style.removeProperty("font-size");
+        }
+        element.style.whiteSpace = "nowrap";
+
+        const computed = window.getComputedStyle(element);
+        const baseSize = parseFloat(computed.fontSize);
+        if (!Number.isFinite(baseSize) || baseSize <= 0) return;
+
+        const minSize = Math.max(7, baseSize * 0.35);
+        let nextSize = baseSize;
+
+        while (element.scrollWidth > element.clientWidth + 1 && nextSize > minSize) {
+          nextSize -= 0.5;
+          element.style.setProperty("font-size", `${nextSize}px`, "important");
+        }
+      });
+    }
+
+    function fitLandingScreen() {
+      const landing = document.getElementById("landingScreen");
+      if (!landing || landing.classList.contains("hidden")) return;
+
+      const rules = [
+        ["#landingScreen h1", 34, 18],
+        ["#landingScreen .landing-copy", 15, 9],
+        ["#landingScreen .card span", 17, 8],
+        ["#landingScreen .landing-menu-icon", 28, 15],
+        ["#landingScreen .landing-menu-text", 14, 8],
+        ["#landingScreen > button span", 16, 8],
+        ["#landingScreen #startAppBtnBrand .landing-brand-text strong", 30, 16],
+        ["#landingScreen #startAppBtnBrand > div:last-child > span", 16, 8]
+      ];
+
+      function applyScale(scale) {
+        landing.style.setProperty("gap", `${Math.max(3, 10 * scale)}px`, "important");
+        landing.style.setProperty("padding-top", `${Math.max(7, 14 * scale)}px`, "important");
+        landing.style.setProperty("padding-bottom", `${Math.max(7, 14 * scale)}px`, "important");
+
+        document.querySelectorAll("#landingScreen .landing-menu-item").forEach((element) => {
+          element.style.setProperty("min-height", `${Math.max(46, 58 * scale)}px`, "important");
+          element.style.setProperty("padding-top", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(4, 6 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#landingScreen > button").forEach((element) => {
+          element.style.setProperty("min-height", `${Math.max(34, 40 * scale)}px`, "important");
+          element.style.setProperty("padding-top", `${Math.max(5, 7 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(5, 7 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#landingScreen #startAppBtnBrand").forEach((element) => {
+          element.style.setProperty("min-height", `${Math.max(64, 82 * scale)}px`, "important");
+          element.style.setProperty("padding-top", `${Math.max(6, 8 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(6, 8 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#landingScreen #startAppBtnBrand .landing-logo-wrap").forEach((element) => {
+          const size = Math.max(42, 56 * scale);
+          element.style.setProperty("width", `${size}px`, "important");
+          element.style.setProperty("height", `${size}px`, "important");
+        });
+
+        rules.forEach(([selector, base, min]) => {
+          document.querySelectorAll(selector).forEach((element) => {
+            element.style.setProperty("font-size", `${Math.max(min, base * scale)}px`, "important");
+          });
+        });
+      }
+
+      applyScale(1);
+      let scale = 1;
+      const maxHeight = landing.clientHeight;
+
+      while (landing.scrollHeight > maxHeight + 1 && scale > 0.52) {
+        scale -= 0.04;
+        applyScale(scale);
+      }
+    }
+
+    function fitPracticeScreen() {
+      const driveArea = document.getElementById("actual-drive-area");
+      const map = document.getElementById("intersection-map");
+      if (!driveArea || !map || driveArea.classList.contains("hidden")) return;
+
+      const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const top = driveArea.getBoundingClientRect().top;
+      const availableHeight = Math.max(280, viewportHeight - top - 8);
+
+      function applyScale(scale) {
+        driveArea.style.removeProperty("max-height");
+        map.style.setProperty("height", "350px", "important");
+
+        document.querySelectorAll("#actual-drive-area .drive-head").forEach((element) => {
+          element.style.setProperty("padding-top", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(4, 6 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area .drive-dashboard").forEach((element) => {
+          element.style.setProperty("padding-top", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("gap", `${Math.max(3, 6 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area .drive-dashboard .speed-box").forEach((element) => {
+          element.style.setProperty("font-size", `${Math.max(11, 12.5 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area #stop-timer").forEach((element) => {
+          element.style.setProperty("font-size", `${Math.max(11.5, 13.2 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area .tutorial").forEach((element) => {
+          element.style.setProperty("margin-top", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("margin-bottom", `${Math.max(4, 6 * scale)}px`, "important");
+          element.style.setProperty("padding-top", `${Math.max(5, 7 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(5, 7 * scale)}px`, "important");
+          element.style.setProperty("font-size", `${Math.max(8.5, 13 * scale)}px`, "important");
+          element.style.setProperty("line-height", "1.32", "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area .pedals").forEach((element) => {
+          element.style.setProperty("gap", `${Math.max(5, 8 * scale)}px`, "important");
+          element.style.setProperty("padding-bottom", `${Math.max(6, 8 * scale)}px`, "important");
+        });
+
+        document.querySelectorAll("#actual-drive-area .pedal").forEach((element) => {
+          element.style.setProperty("min-height", `${Math.max(48, 78 * scale)}px`, "important");
+        });
+      }
+
+      applyScale(1);
+      let scale = 1;
+
+      while (driveArea.scrollHeight > availableHeight + 1 && scale > 0.38) {
+        scale -= 0.04;
+        applyScale(scale);
+      }
+    }
+
+    function scheduleFitSingleLineText() {
+      if (fitTextRaf) cancelAnimationFrame(fitTextRaf);
+      fitTextRaf = requestAnimationFrame(() => {
+        fitTextRaf = null;
+        fitLandingScreen();
+        fitPracticeScreen();
+        fitSingleLineText();
+        fitPracticeScreen();
+      });
+    }
+
+    window.addEventListener("load", scheduleFitSingleLineText);
+    window.addEventListener("resize", scheduleFitSingleLineText);
+    window.addEventListener("orientationchange", scheduleFitSingleLineText);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", scheduleFitSingleLineText);
+    }
+    if (window.MutationObserver) {
+      ["stop-timer"].forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        new MutationObserver(scheduleFitSingleLineText).observe(element, {
+          childList: true,
+          characterData: true,
+          subtree: true
+        });
+      });
+    }
     
     function showResult(title, message, items) {
       resultTitle.textContent = title;
@@ -1718,9 +2630,51 @@
         } catch (e) { console.log("오디오 미지원 패스"); }
       }
       resultModal.classList.add("show");
+      scheduleFitSingleLineText();
     }
 
     function hideResult() { resultModal.classList.remove("show"); }
+
+    function showNoticeModal(title, message, items = []) {
+      showResult(title, message, items);
+      resultModal.dataset.requireAction = "true";
+      nextScenarioBtn.style.display = "none";
+
+      const currentRetryBtn = document.getElementById("retryBtn");
+      const noticeBtn = currentRetryBtn.cloneNode(true);
+      noticeBtn.textContent = "확인";
+      noticeBtn.style.gridColumn = "span 2";
+      currentRetryBtn.parentNode.replaceChild(noticeBtn, currentRetryBtn);
+
+      noticeBtn.addEventListener("click", () => {
+        hideResult();
+        delete resultModal.dataset.requireAction;
+        nextScenarioBtn.style.display = "block";
+
+        const restoredBtn = noticeBtn.cloneNode(true);
+        restoredBtn.textContent = "다시";
+        restoredBtn.style.gridColumn = "";
+        noticeBtn.parentNode.replaceChild(restoredBtn, noticeBtn);
+        restoredBtn.addEventListener("click", () => initPractice());
+        scheduleFitSingleLineText();
+      }, { once: true });
+
+      scheduleFitSingleLineText();
+    }
+
+    function textFromHtml(value) {
+      const template = document.createElement("template");
+      template.innerHTML = String(value || "");
+      return (template.content.textContent || String(value || "")).replace(/\s+/g, " ").trim();
+    }
+
+    function formatPenaltyMessage(message) {
+      return `<div class="penalty-summary">${message}</div>`;
+    }
+
+    function formatResultItems(items) {
+      return items.map((item) => `<div class="modal-readable">${item}</div>`);
+    }
 
     function setScreen(name) {
       if (state.currentScreen === "video" && name !== "video") pauseVideo();
@@ -1730,15 +2684,25 @@
       
       screens.forEach((screen) => { 
         if (screenEls[screen]) {
-          screenEls[screen].classList.toggle("active", screen === name); 
-          screenEls[screen].classList.toggle("hidden", screen !== name); 
+          if (screen === name) {
+            screenEls[screen].classList.add("active");
+            screenEls[screen].classList.remove("hidden");
+          } else {
+            screenEls[screen].classList.remove("active");
+            screenEls[screen].classList.add("hidden");
+          }
         }
       });
       
-      if (name === "advanced") {
-        document.getElementById("advancedGatewayScreen").classList.remove("hidden");
-      } else {
-        document.getElementById("advancedGatewayScreen").classList.add("hidden");
+      const advScreen = document.getElementById("advancedGatewayScreen");
+      if (advScreen) {
+        if (name === "advanced") {
+          advScreen.classList.remove("hidden");
+          advScreen.classList.add("active");
+        } else {
+          advScreen.classList.add("hidden");
+          advScreen.classList.remove("active");
+        }
       }
       
       if (document.getElementById("eduEndScreen")) {
@@ -1746,12 +2710,14 @@
       }
       
       stepButtons.forEach((button) => { button.classList.toggle("active", button.dataset.screen === name); });
+      
       if (name === "drive") {
         isAdvancedMode = false; 
         document.getElementById("drive-edu-gate").classList.remove("hidden");
         document.getElementById("actual-drive-area").classList.add("hidden");
         clearInterval(state.gameInterval);
       }
+      scheduleFitSingleLineText();
     }
 
     function renderQuiz() {
@@ -1764,6 +2730,7 @@
       quizNextBtn.disabled = true; quizPrevBtn.disabled = state.quizIndex === 0;
       quizNextBtn.textContent = state.quizIndex === quizData.length - 1 ? "실습 가기" : "다음";
       quizHint.textContent = "사진을 보고 가장 맞는 답을 선택하세요.";
+      scheduleFitSingleLineText();
     }
 
     function answerQuiz(index) {
@@ -1787,6 +2754,7 @@
       }
       quizNextBtn.disabled = false;
       quizHint.textContent = correct ? "좋아요. 다음 문제로 넘어가세요." : "설명을 읽고 다음 문제로 넘어가세요.";
+      scheduleFitSingleLineText();
     }
 
     function playQuizAudio(isCorrect) {
@@ -2055,6 +3023,7 @@
           practicePedestrian2.classList.add("hidden"); 
         }
       }
+      scheduleFitSingleLineText();
     }
 
     function triggerCountdownSequence() {
@@ -2151,6 +3120,7 @@
       
       stopTimer.classList.add("hidden"); practiceSpeed.textContent = "0";
       brakeBtn.classList.remove("active"); accelBtn.classList.remove("active");
+      accelBtn.classList.remove("highlight-gold");
       const sc8Msg = document.getElementById("scenario8-success-msg");
       if (sc8Msg) {
         sc8Msg.classList.add("hidden");
@@ -2183,6 +3153,7 @@
       document.getElementById("countdown-sub-title").textContent = "";
       overlay.classList.remove("hidden");
       overlay.style.paddingTop = "20px";
+      scheduleFitSingleLineText();
     }
 
     function prevPracticeScenario() { 
@@ -2490,13 +3461,16 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
         }
       }
 
-      if (state.progress > 353 && state.progress < 400) { 
+      const isZoomMode = window.innerWidth < 385 || (window.visualViewport && window.visualViewport.scale > 1.02);
+      const triggerThreshold = isZoomMode ? 338 : 353;
+
+      if (state.progress > triggerThreshold && state.progress < 410) { 
         if (state.currentSpeed > 20) { 
           triggerPenalty("서행 위반", "우회전 시에는 전방 상황에 상관없이 시속 20km 이하로 서행 통과해야 합니다.", ["우회전은 서행이 절대 기본입니다."]); 
           return; 
         } 
         if (activeData.hasPed && state.currentSpeed > 0) {
-          if ((state.pedPos > 9 && state.pedPos < 36) || (state.pedPos2 > 9 && state.pedPos2 < 36)) {
+          if ((state.pedPos > 5 && state.pedPos < 42) || (state.pedPos2 > 5 && state.pedPos2 < 42)) {
             if (isAdvancedMode && activeData.id === 21) {
               triggerPenalty("🚨보행자 보호 의무 위반(스쿨존)", "<div style='background-color: #f59e0b; color: #111; padding: 10px; border-radius: 8px; font-weight: 900; font-size: 17px; margin-bottom: 12px; text-align: center;'>⚠️ 도로교통법 제27조 보행자 보호 위반 스쿨존 가중 시간대 (승용차 기준)<br>범칙금 12만원 / 벌점 20점 / 과태료 7만원</div>", ["<div style='text-align: center; width: 100%;'>횡단보도를 건너는 사람이 있다면 무조건 <br> <span style='color: #ef4444; font-weight: bold;'>일시정지 후 정지 상태를 유지</span>해야 합니다.</div>"]);
               return;
@@ -2649,7 +3623,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           osc2.onended = () => { osc2.disconnect(); gain2.disconnect(); };
         }
       } catch (e) {}
-      showResult(title, message, items);
+      showResult(title, formatPenaltyMessage(message), formatResultItems(items));
     }
 
     function startBrake() { if (state.isGameOver || state.isControlLocked) return; state.isBraking = true; state.isAcceling = false; brakeBtn.classList.add("active"); accelBtn.classList.remove("active"); }
@@ -2663,9 +3637,19 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
     function stopAccel() { state.isAcceling = false; accelBtn.classList.remove("active"); }
 
     document.getElementById("startAppBtnBrand").addEventListener("click", () => { 
-  document.getElementById("landingScreen").classList.add("hidden"); 
-  document.getElementById("appShell").classList.remove("hidden"); 
-});
+      document.querySelector(".phone").classList.remove("landing-mode");
+      document.getElementById("landingScreen").classList.add("hidden"); 
+      document.getElementById("appShell").classList.remove("hidden"); 
+
+      // 안드로이드 전체화면 요청 (상하단 바 숨김 트리거)
+      try {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        }
+      } catch (e) {}
+    });
     
     document.getElementById("openAdvancedMenuBtn").addEventListener("click", () => { 
       const advancedTabButton = Array.from(stepButtons).find(btn => btn.dataset.screen === "advanced");
@@ -2714,7 +3698,11 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
           }
           
           if (!state.isAdvancedUnlocked) {
-            alert("🔒 죄송하지만..ㅠ 아직 당신은 우회전 초보입니다..\n\n[3.실습]탭에서 7개의 기본 미션을 먼저 완료하세요.\n\n[3.실습]의 미션을 완료하시면 심화 모드가 해금됩니다!");
+            showNoticeModal(
+              "🔒 심화편 잠금",
+              "기본 실습을 먼저 완료하면 심화편이 열립니다.",
+              ["[3. 실습] 탭의 기본 미션 7개를 완료해 주세요."]
+            );
             return; 
           }
         }
@@ -2756,6 +3744,7 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
     document.getElementById("finalRestartBtn").onclick = function() {
       document.getElementById("eduEndScreen").classList.add("hidden"); 
       appShell.classList.add("hidden"); 
+      document.querySelector(".phone").classList.add("landing-mode");
       landingScreen.classList.remove("hidden");
       
       setScreen("video"); 
@@ -2768,12 +3757,11 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
     };
 
     document.getElementById("finalCloseBtn").onclick = function() {
-      alert("교통안전 교육 수료 완료! 시스템을 종료합니다.");
-      document.body.innerHTML = `<div style="width:100vw; height:100vh; background:#ffffff; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:sans-serif;"><span style="font-size:48px; margin-bottom:20px;">🔒</span><strong style="font-size:20px; color:#334155;">프로그램이 안전하게 종료되었습니다.</strong><p style="font-size:14px; color:#64748b; margin-top:8px;">이 브라우저 창이나 탭을 닫으셔도 됩니다.</p></div>`;
+      document.body.innerHTML = `<div style="width:100%; min-height:100dvh; background:#ffffff; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px; padding:24px; box-sizing:border-box; text-align:center; font-family:sans-serif; overflow-wrap:anywhere;"><span style="font-size:48px;">🔒</span><strong style="font-size:20px; line-height:1.35; color:#334155;">프로그램이 안전하게 종료되었습니다.</strong><p style="font-size:14px; line-height:1.5; color:#64748b; margin:0;">이 브라우저 창이나 탭을 닫으셔도 됩니다.</p></div>`;
       window.close();
     };
 
-    resultModal.addEventListener("click", (event) => { if (event.target === resultModal) hideResult(); });
+    resultModal.addEventListener("click", (event) => { if (event.target === resultModal && !resultModal.dataset.requireAction) hideResult(); });
     document.addEventListener("keydown", (event) => { if (state.currentScreen !== "drive" || event.repeat) return; if (event.key === "ArrowDown") { event.preventDefault(); startBrake(); } if (event.key === "ArrowUp" || event.key === " ") { event.preventDefault(); startAccel(); } });
     document.addEventListener("keyup", (event) => { if (event.key === "ArrowDown") stopBrake(); if (event.key === "ArrowUp" || event.key === " ") stopAccel(); });
     
@@ -2847,13 +3835,16 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
       }
 
       showResult(hintTitle, hintBody, hintBottom);
+      resultModal.dataset.requireAction = "true";
       document.getElementById("nextScenarioBtn").style.display = "none";
       const retryBtn = document.getElementById("retryBtn");
       const originalText = retryBtn.textContent;
       retryBtn.textContent = "확인 (닫기)"; retryBtn.style.gridColumn = "span 2";
       const cloneBtn = retryBtn.cloneNode(true); retryBtn.parentNode.replaceChild(cloneBtn, retryBtn);
+      scheduleFitSingleLineText();
       
       const closeHandler = () => {
+        delete resultModal.dataset.requireAction;
         hideResult(); document.getElementById("nextScenarioBtn").style.display = "block";
         cloneBtn.textContent = originalText; cloneBtn.style.gridColumn = ""; 
         const originalRetryBtn = cloneBtn.cloneNode(true); cloneBtn.parentNode.replaceChild(originalRetryBtn, cloneBtn);
@@ -2863,9 +3854,15 @@ const isGreenDriveMode = (!isAdvancedMode && (state.practiceIndex === 3 || state
       cloneBtn.addEventListener("click", closeHandler);
     };
 
-    document.getElementById("btn-gate-confirm").addEventListener("click", () => { document.getElementById("drive-edu-gate").classList.add("hidden"); document.getElementById("actual-drive-area").classList.remove("hidden"); initPractice(); });
+    document.getElementById("btn-gate-confirm").addEventListener("click", () => { 
+      document.getElementById("drive-edu-gate").classList.add("hidden"); 
+      document.getElementById("actual-drive-area").classList.remove("hidden"); 
+      initPractice(); 
+      scheduleFitSingleLineText();
+    });
 
     renderQuiz();
+    scheduleFitSingleLineText();
   </script>
 </body>
 </html>
